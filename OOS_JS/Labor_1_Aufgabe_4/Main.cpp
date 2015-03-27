@@ -48,29 +48,24 @@ char * enterName(char str[])
 // Nutzen Sie srand(...) und rand().
 objectType randomChoice()
 {
-	
 	return objectType(rand() % 3);
 }
 
 // Die Wahl von STEIN etc. als String zurückgeben lassen
 char * object2str(objectType o)
 {
-	return (char*)(o);
+	switch (o)
+	{
+	case SCHERE: return("Schere");
+	case STEIN: return("Stein");
+	case PAPIER: return("Papier"); 
+	}
 }
 
 // Einen Text mit dem Namen des Spielers und seiner Wahl ausgeben
 void showPlayer(player p)
 {
-	char  *choiceToString = nullptr;
-
-	switch (p.choice)
-	{
-		case SCHERE: choiceToString = "Schere"; break;
-		case STEIN: choiceToString = "Stein"; break;
-		case PAPIER: choiceToString = "Papier"; break;
-	}
-
-	cout << endl << p.name << " hat das Objekt " << choiceToString << " gewaehlt." << endl;
+	cout << endl << p.name << " hat das Objekt " << object2str(p.choice) << " gewaehlt." << endl;
 }
 
 // Die Wahl des Spielers abfragen

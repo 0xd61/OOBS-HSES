@@ -9,11 +9,11 @@ int main() {
 
 	for (int k = 1; k < 11; k++) {
 		cout << setw(2) << setfill(' ') << right <<  dec << k;
-		cout << setw(3) << setfill(' ') << oct << k;
-		cout << setw(3) << "    0x" << hex << k << " ";
-		cout << setw(7) << setfill('+') << left << string(k % 5 + 1, '*') << " ";
-		cout << setw(2) <<  setprecision(3) << fixed << d;
-		cout << "    " << scientific << d;
+		cout << setw(5) << showbase << setfill(' ') << oct << k;
+		cout << setw(5) <<  hex << k << " ";
+		cout << setw(7) << setfill('+') << right << string(k % 5 + 1, '*') << " ";
+		cout << setw(10) << setfill(' ') << showpos << left <<  setprecision(3) << fixed << d;
+		cout << setw(12) << noshowpos <<  scientific << d;
 		d = d*-2;
 		cout << endl;
 	}

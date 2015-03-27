@@ -1,9 +1,10 @@
 #include <cmath>
 
+#define DEGREE_TO_RADIAN(degree) ((degree*3.14159f) / 180.0f)
 
-float trapezFlaeche(float a, float b = 1.0f, float winkel = 90.0f , float c = 1.0f)
+float trapezFlaeche(float a, float b = 4.0f, float winkel = 90.0f , float c = 0.0f)
 {
-	return(0.5f * (a+c) * b * sin(winkel));
+	return(0.5f * (a+c) * b * sin(DEGREE_TO_RADIAN(winkel)));
 }
 
 int main()

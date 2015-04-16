@@ -137,7 +137,8 @@ void Labyrinth::erzeugen() {
 	int posy = labZeilen / 2;
 	lab[posy][posx] = ICH;
 	drucken();
-	while (c != 'q') {
+	while (c != 'q') 
+	{
 		drucken();
 		cout << "Laufen mit Pfeiltasten. Beenden mit q." << endl;
 		lab[posy][posx] = WEG;
@@ -156,6 +157,8 @@ void Labyrinth::erzeugen() {
 		}
 		lab[posy][posx] = ICH;
 	}
+	lab[posy][posx] = WEG;
+	drucken();
 }
 
 // Hilfsfunktion max

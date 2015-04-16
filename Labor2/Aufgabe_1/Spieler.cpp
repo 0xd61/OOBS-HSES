@@ -4,15 +4,16 @@
 Spieler::Spieler()
 {
 	m_Pos = Position();
-	m_Pos.r = Richtung::OBEN;
+	//m_Pos.r = Richtung::OBEN;
 
 }
 
-Spieler::Spieler(MyString& name)
+//TODO: Error bei Dekonstruktor von MyString. Es werden komische Objekte erstellt und gelöscht.
+Spieler::Spieler(MyString name)
 {
 	m_Name = name;
 	m_Pos = Position();
-	m_Pos.r = Richtung::OBEN;
+	//m_Pos.r = Richtung::OBEN;
 
 
 }
@@ -22,7 +23,7 @@ Spieler::Spieler(char* name)
 	m_Name = name;
 
 	m_Pos = Position();
-	m_Pos.r = Richtung::OBEN;
+	//m_Pos.r = Richtung::OBEN;
 
 }
 

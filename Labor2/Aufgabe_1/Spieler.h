@@ -8,7 +8,7 @@ class Spieler
 {
 	public:
 		Spieler();
-		Spieler(MyString& name);
+		Spieler(MyString name);
 		Spieler(char* name);
 
 	public:

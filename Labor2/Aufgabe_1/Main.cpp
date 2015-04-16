@@ -23,4 +23,5 @@ int main()
 		PacMan pm(lab, s, g, kAnzGeister);
 		pm.spielen();
 	}
+	return 0;
 }

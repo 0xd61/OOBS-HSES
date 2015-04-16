@@ -10,5 +10,6 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Polygonline.cpp" />
+    <ClCompile Include="PlgElement.cpp" />
   </ItemGroup>
 </Project>

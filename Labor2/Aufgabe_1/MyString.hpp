@@ -7,7 +7,6 @@ public:
 	MyString(char * strPtr);
 	MyString(MyString & Object);
 	~MyString();
-	void reserve(unsigned int c);
 	MyString & append(MyString & str);
 	MyString & assign(MyString & str);
 	char* c_str();
@@ -16,6 +15,10 @@ public:
 	void clear();
 	bool empty();
 	char & at(int i);
+
+private:
+	void reserve(unsigned int c);
+
 
 private:
 	char * strPtr;

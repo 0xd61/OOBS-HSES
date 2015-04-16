@@ -1,187 +1,169 @@
-#include <conio.h>
+//Labyrinth.cpp
+#include "Labyrinth.hpp"
+#include "Position.h"
 #include <iostream>
 #include <fstream>
-#include "Labyrinth.h"
+#include <conio.h> // für _getch()
+// Achtung: _getch() ist nicht im Standard und 
+//          daher abhängig vom Compiler
 
 using namespace std;
 
-int max_own(int x, int y)
-{
-	return (x <= y) ? y : x;
-}
 
-// Hilfsfunktion min
-int min_own(int x, int y)
-{
-	return (x <= y) ? x : y;
-}
+//Konstruktor
+Labyrinth::Labyrinth(){
+	labZeilen = kZeilen;
+	labSpalten = kSpalten;
+	labAnzGeister = 3;
+	muenzen = 0;
 
-unsigned int Labyrinth::getZeilen()
-{
-	return(m_LabZeilen);
-}
-
-unsigned int Labyrinth::getSpalten()
-{
-	return(m_LabSpalten);
-}
-
-unsigned int Labyrinth::getAnzGeister()
-{
-	return(m_LabAnzGeister);
-}
-
-char Labyrinth::getZeichenAnPos(Position pos)
-{
-	return(m_Lab[pos.posx][pos.posx]);
-}
-
-bool Labyrinth::istMuenzeAnPos(Position pos)
-{
-	return(m_Lab[pos.posx][pos.posy] == MUENZE);
-}
-
-unsigned int Labyrinth::getMuenzen()
-{
-	return(m_Muenzen);
-}
-
-Labyrinth::Labyrinth() : m_LabAnzGeister(5), m_Muenzen(0) , m_LabZeilen(kZeilen) , m_LabSpalten(kSpalten)
-{
 	initialisieren();
 }
 
-Labyrinth::Labyrinth(unsigned int zeilen, unsigned int spalten, unsigned int anzahlGeister) :m_LabZeilen(zeilen), m_LabSpalten(spalten), m_LabAnzGeister(anzahlGeister), m_Muenzen(0)
+int Labyrinth::getZeilen()
 {
-	initialisieren();
+	return labZeilen;
 }
 
-void Labyrinth::initialisieren()
+int Labyrinth::getSpalten()
 {
-	for (int zeile = 0; zeile < kZeilen; zeile++)
-	{
-		for (int spalte = 0; spalte < kSpalten; spalte++)
-		{
-			m_Lab[zeile][spalte] = '#';
-		}
-
-		//Vorletzte und letzte Spalte befüllen.
-		m_Lab[zeile][kSpalten] = '\n';
-		m_Lab[zeile][kSpalten + 1] = '\0';
-
-	}
+	return labSpalten;
 }
 
-void Labyrinth::drucken()
+int Labyrinth::getAnzGeister()
 {
-	// Console frei machen
-	system("cls");
-
-	// Labyrinth ausgeben
-	/* HIER */
-	for (int zeile = 0; zeile < kZeilen; zeile++)
-	{
-		for (int spalte = 0; spalte < kSpalten + 1; spalte++)
-		{
-			cout << m_Lab[zeile][spalte];
-		}
-
-	}
+	return labAnzGeister;
 }
 
-void Labyrinth::erzeugen()
+int Labyrinth::getMuenzen()
 {
-	char c = 'x';
-	int posx = kSpalten / 2;
-	int posy = kZeilen / 2;
-
-	m_Lab[posy][posx] = ICH;
-	drucken();
-
-	while (c != 'q')
-	{
-		drucken();
-		cout << "Laufen mit Pfeiltasten. Beenden mit q." << endl;
-
-		m_Lab[posy][posx] = WEG;
-		c = _getch();
-
-		switch (int(c))
-		{
-			// oben
-		case 72: posy = max_own(1, posy - 1); break;
-
-			// links
-		case 75: posx = max_own(1, posx - 1); break;
-
-			// rechts
-		case 77: posx = min_own(kSpalten - 2, posx + 1); break;
-
-			// unten
-		case 80: posy = min_own(kZeilen - 2, posy + 1); break;
-
-			// q = quit
-		case 113: break;
-		}
-
-		m_Lab[posy][posx] = ICH;
-	}
+	return muenzen;
 }
 
+//Freie Plätze werden mit muenzen belegt
 void Labyrinth::legeMuenzen()
 {
-	for (int zeile = 0; zeile < kZeilen; zeile++)
+	for (int i = 0; i < labZeilen; i++)
 	{
-		for (int spalte = 0; spalte < kSpalten; spalte++)
+		for (int j = 0; j < labSpalten; j++)
 		{
-			if (m_Lab[zeile][spalte] == ' ')
+			if (lab[i][j] == ' ')
 			{
-				m_Lab[zeile][spalte] = MUENZE;
-				m_Muenzen++;
+				lab[i][j] = ';';
+				muenzen++;
 			}
 		}
-
 	}
 }
 
 void Labyrinth::zeichneChar(char c, Position pos)
 {
-	m_Lab[pos.posx][pos.posx] = c;
+	lab[pos.posy][pos.posx] = c;
 }
 
 void Labyrinth::zeichneChar(char c, Position posalt, Position posneu)
 {
-	m_Lab[posneu.posx][posneu.posy] = c;
-	m_Lab[posalt.posx][posalt.posy] = ' ';
-
+	lab[posneu.posy][posneu.posx] = c;
+	lab[posalt.posy][posalt.posx] = ' ';
 }
 
-void Labyrinth::exportDatei(char *fileName)
+char Labyrinth::getZeichenAnPos(Position pos)
 {
-	ofstream datei(fileName);
-	if (!datei) 
-	{
+	return lab[pos.posy][pos.posx];
+}
+
+bool Labyrinth::istMuenzeAnPos(Position pos)
+{
+	if (lab[pos.posy][pos.posx] == ';')
+		return true;
+	else
+		return false;
+}
+
+// Labyrinth als Textdatei speichern
+void Labyrinth::exportDatei(char * dateiname) {
+	ofstream datei(dateiname);
+	if (!datei) {
 		cerr << "Kann Datei nicht oeffnen" << endl;
 	}
-	for (int i = 0; i < kZeilen; i++) 
-	{
-		datei << m_Lab[i];
+	for (int i = 0; i < kZeilen; i++) {
+		datei << lab[i];
 	}
 	datei.close();
 }
 
-void Labyrinth::importDatei(char *fileName)
-{
-	ifstream datei(fileName);
-	if (!datei) 
-	{
+// Labyrinth als Textdatei einlesen
+void Labyrinth::importDatei(char * dateiname) {
+	ifstream datei(dateiname);
+	if (!datei) {
 		cerr << "Kann Datei nicht oeffnen" << endl;
 	}
-	for (int i = 0; i < kZeilen; i++) 
-	{
-		datei.getline(m_Lab[i], kSpalten + 2);
-		m_Lab[i][kSpalten] = '\n';
-		m_Lab[i][kSpalten + 1] = '\0';
+	for (int i = 0; i < kZeilen; i++) {
+		datei.getline(lab[i], kSpalten + 2);
+		lab[i][kSpalten] = '\n';
+		lab[i][kSpalten + 1] = '\0';
 	}
 	datei.close();
+}
+
+// Labyrinth auf dem Bildschirm ausgeben
+void Labyrinth::drucken() {
+	// Console frei machen
+	system("cls");
+	// Labyrinth ausgeben
+	for (int i = 0; i < labZeilen; i++)
+	{
+		//cout << *labyrinth;
+		for (int j = 0; j < labSpalten + 1; j++)
+			cout << lab[i][j];
+	}
+}
+// Labyrinth mit # füllen
+void Labyrinth::initialisieren() {
+	for (int i = 0; i < labZeilen; i++)
+	{
+		for (int j = 0; j < labSpalten; j++)
+			lab[i][j] = MAUER;
+		lab[i][labSpalten] = '\n';
+		lab[i][labSpalten + 1] = '\0';
+	}
+
+}
+// Durch Herumlaufen werden Wege im Labyrinth erzeugt
+// ASCII-Wert der Tasten: oben 72, links 75, rechts 77, unten 80
+void Labyrinth::erzeugen() {
+	char c = 'x';
+	int posx = labSpalten / 2;
+	int posy = labZeilen / 2;
+	lab[posy][posx] = ICH;
+	drucken();
+	while (c != 'q') {
+		drucken();
+		cout << "Laufen mit Pfeiltasten. Beenden mit q." << endl;
+		lab[posy][posx] = WEG;
+		c = _getch();
+		switch (int(c)) {
+			// oben
+		case 72: posy = Max(1, posy - 1); break;
+			// links
+		case 75: posx = Max(1, posx - 1); break;
+			// rechts
+		case 77: posx = Min(labSpalten - 2, posx + 1); break;
+			// unten
+		case 80: posy = Min(labZeilen - 2, posy + 1); break;
+			// q = quit
+		case 113: break;
+		}
+		lab[posy][posx] = ICH;
+	}
+}
+
+// Hilfsfunktion max
+int Labyrinth::Max(int x, int y) {
+	return (x <= y) ? y : x;
+}
+
+// Hilfsfunktion min
+int Labyrinth::Min(int x, int y) {
+	return (x <= y) ? x : y;
 }

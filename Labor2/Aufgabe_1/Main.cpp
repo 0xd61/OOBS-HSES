@@ -1,5 +1,5 @@
 #include "PacMan.h"
-#include "Labyrinth.h"
+#include "Labyrinth.hpp"
 #include "Spieler.h"
 
 const bool kErzeugen = false;

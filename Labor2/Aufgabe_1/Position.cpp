@@ -1,5 +1,5 @@
 // Datei Position.cpp
-#include "Labyrinth.h"
+#include "Labyrinth.hpp"
 #include "Position.h"
 
 // Hilfsfunktion max

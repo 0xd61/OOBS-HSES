@@ -1,7 +1,7 @@
 // Datei PacMan.hpp
 #pragma once
 
-#include "Labyrinth.h"
+#include "Labyrinth.hpp"
 #include "Spieler.h"
 
 const unsigned int kAnzGeister = 4;

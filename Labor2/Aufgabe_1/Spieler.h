@@ -1,7 +1,7 @@
 #pragma once
 
 #include "MyString.hpp"
-#include "Labyrinth.h"
+#include "Labyrinth.hpp"
 #include "Position.h"
 
 class Spieler

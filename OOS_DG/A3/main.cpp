@@ -37,7 +37,7 @@ void drucken() {
 	// Labyrinth ausgeben
 	for (int i = 0; i < kZeilen; i++)
 	{
-			//cout << *labyrinth;
+			//cout << *labyrinth; GEHT NICHT
 		for (int j = 0; j < kSpalten + 1; j++)
 			cout << labyrinth[i][j];
 	}

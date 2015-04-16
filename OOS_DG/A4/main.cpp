@@ -17,6 +17,7 @@ ist maechtiger als PAPIER
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include <clocale>
 #include <iostream>
 using namespace std;
 
@@ -46,6 +47,7 @@ char * enterName(char str[])
 // Nutzen Sie srand(...) und rand().
 objectType randomChoice()
 {
+	srand(time(NULL));
 	return objectType(rand() % 3);
 }
 
@@ -71,7 +73,7 @@ char * object2str(objectType o)
 void showPlayer(player p)
 {
 
-	cout << p.name << " hat " << object2str(p.choice) << " gewaehlt." << endl << endl;
+	cout << p.name << " hat " << object2str(p.choice) << " gewählt." << endl << endl;
 }
 
 // Die Wahl des Spielers abfragen
@@ -81,7 +83,7 @@ objectType enterChoice()
 
 	while (true)
 	{
-		cout << "Was moechtest du waehlen: ";
+		cout << "Was möchtest du wählen: ";
 		cout << "[S]tein; Sch[e]re; [P]apier" << endl;
 
 		cin >> Input;
@@ -98,7 +100,7 @@ objectType enterChoice()
 		case 'p':
 			return PAPIER;
 		default:
-			cout << "Ungueltiges Zeichen!" << endl << endl;
+			cout << "Ungültiges Zeichen!" << endl << endl;
 			break;
 		}
 	}
@@ -123,20 +125,23 @@ void showWinner(player p1, player p2)
 {
 	
 	objectType WinningObj = winningObject(p1.choice, p2.choice);
-
-	if (WinningObj == p1.choice)
-	{
-		cout << p1.name << " hat gewonnen!" << endl;
-	}
+	if (p1.choice == p2.choice)
+		cout << "Beide haben das gleiche gewählt. Es steht unentschieden!";
 	else
 	{
-		cout << p2.name << " hat gewonnen!" << endl;
+		if (WinningObj == p1.choice)
+			cout << p1.name << " hat gewonnen!" << endl;
+		else
+			cout << p2.name << " hat gewonnen!" << endl;
 	}
 
 }
 
 int main()
 {
+	//Umgebungsvariable auf Local setzen
+	setlocale(LC_ALL, "");
+
 	player player1, player2;
 	player1.name = "Computer";
 	player1.choice = randomChoice();

@@ -1,12 +1,15 @@
 #include <iostream>
 #include <cmath>
 
+#define PI 3.14159265
+#define DEG2RAD(degree) ((degree*PI)/180.0f)
+
 using namespace std;
 
 float trapezFlaeche(float a, float b = 4.0f, float angle = 90.0f, float c = 0.0f)
 {
 	
-	return (1.0f/2.0f) * (a + c) * b * sin(angle*3.14159265/180.0f);
+	return (0.5f) * (a + c) * b * sin(DEG2RAD(angle));
 }
 int main()
 {
@@ -20,6 +23,5 @@ int main()
 	//d
 	d = trapezFlaeche(2.0f);
 
-	getchar();
 	return 0;
 }

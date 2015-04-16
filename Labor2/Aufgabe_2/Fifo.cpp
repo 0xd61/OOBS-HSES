@@ -52,9 +52,8 @@ int Fifo::push(char c)
 		wPos = 0;
 		
 	ptr[wPos] = c;
-	wPos++;
 	number++;
-	return (wPos-1);
+	return wPos++; //zuerst zurückgeben, dann inkrement
 }
 
 char Fifo::pop()
@@ -66,6 +65,6 @@ char Fifo::pop()
 		rPos = 0;
 
 	number--;
-	rPos++;
-	return (ptr[rPos-1]); //-1, weil davor erhöht
+	//rPos++;
+	return (ptr[rPos++]); //-1, weil davor erhöht
 }

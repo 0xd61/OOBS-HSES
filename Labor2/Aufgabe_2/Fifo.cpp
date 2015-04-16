@@ -65,6 +65,5 @@ char Fifo::pop()
 		rPos = 0;
 
 	number--;
-	//rPos++;
-	return (ptr[rPos++]); //-1, weil davor erhöht
+	return (ptr[rPos++]); //zuerst ArrayWert zurückgeben, dann inkrement
 }

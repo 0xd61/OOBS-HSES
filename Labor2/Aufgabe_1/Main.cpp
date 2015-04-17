@@ -12,7 +12,7 @@ int main()
 		lab.erzeugen();
 		lab.exportDatei("lab.txt");
 	}
-	else 
+	else
 	{
 		lab.importDatei("lab.txt");
 		lab.legeMuenzen();
@@ -23,5 +23,5 @@ int main()
 		PacMan pm(lab, s, g, kAnzGeister);
 		pm.spielen();
 	}
-	return 0;
+		return 0;
 }

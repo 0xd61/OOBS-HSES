@@ -14,8 +14,11 @@ Fifo::Fifo(int maxSize)
 
 Fifo::~Fifo()
 {
-	delete[] ptr;
-	ptr = NULL;
+	if (ptr)
+	{
+		delete[] ptr;
+		ptr = nullptr;
+	}
 }
 
 int Fifo::getWPos()

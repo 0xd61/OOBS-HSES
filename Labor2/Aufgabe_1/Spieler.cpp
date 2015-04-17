@@ -9,7 +9,7 @@ Spieler::Spieler()
 }
 
 //TODO: Error bei Dekonstruktor von MyString. Es werden komische Objekte erstellt und gelöscht.
-Spieler::Spieler(MyString name)
+Spieler::Spieler(MyString & name)
 {
 	m_Name = name;
 	m_Pos = Position();

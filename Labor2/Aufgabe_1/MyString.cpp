@@ -34,8 +34,11 @@ MyString::MyString(MyString & Object)
 //TODO: Error nach Pointer auf Null setzen bei beenden des Programms
 MyString::~MyString()
 {
-	delete [] strPtr;
-	strPtr = NULL;
+	if (strPtr)
+	{
+		delete [] strPtr;
+		strPtr = nullptr;
+	}
 }
 
 void MyString::reserve(unsigned int c)

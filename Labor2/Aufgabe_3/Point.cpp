@@ -1,5 +1,7 @@
 #include "Point.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -25,12 +27,15 @@ void Point::move(const double dx, const double dy)
 
 void Point::print(bool useEndl)
 {
+	stringstream stream;
+
+	stream << "(" << m_X << ", " << m_Y << ")";
+
 	if (useEndl)
 	{
-		cout << "(" << m_X << ", " << m_Y << ")" << endl;
+		stream << endl;
 	}
-	else
-	{
-		cout << "(" << m_X << ", " << m_Y << ")";
-	}
+	
+
+	cout << stream.str();
 }

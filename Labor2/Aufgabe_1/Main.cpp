@@ -17,9 +17,7 @@ int main()
 		lab.importDatei("lab.txt");
 		lab.legeMuenzen();
 		Spieler s("Demo");
-		Spieler g[kAnzGeister] = { Spieler("Geist 1"),
-			Spieler("Geist 2"),
-			Spieler("Geist 3") };
+		Spieler g[kAnzGeister] = { Spieler("Geist 1"), Spieler("Geist 2"), Spieler("Geist 3") };
 		PacMan pm(lab, s, g, kAnzGeister);
 		pm.spielen();
 	}

@@ -36,7 +36,7 @@ MyString::~MyString()
 {
 	if (strPtr)
 	{
-		delete [] strPtr;
+		//delete [] strPtr;
 		strPtr = nullptr;
 	}
 }

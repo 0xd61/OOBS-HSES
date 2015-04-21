@@ -22,6 +22,14 @@ MyString::MyString(char * strPtr)
 
 }
 
+MyString::MyString(const MyString& object)
+{
+	this->strCapacity = object.strCapacity;
+	this->strSize = object.strSize;
+	this->strPtr = new char[this->strCapacity];
+	strncpy(this->strPtr, object.strPtr, strCapacity);
+}
+
 MyString::MyString(MyString & Object)
 {
 	this->strCapacity = Object.strCapacity;
@@ -58,7 +66,22 @@ MyString & MyString::append(MyString & str)
 	return *this;
 }
 
+MyString & MyString::append(const MyString & str)
+{
+	int oldSize = this->strSize; //Da die größe bei reserve verändert wird und der Index bei 0 anfängt
+	reserve(strCapacity + str.strSize); // keine Erhöhung, da Nullbyte schon in strCapacity enthalten
+	strncpy(&strPtr[oldSize], str.strPtr, str.strCapacity);
+	return *this;
+}
+
 MyString & MyString::assign(MyString & str)
+{
+	reserve(strlen(str.strPtr) + 1);
+	strncpy(strPtr, str.strPtr, str.strCapacity);
+	return *this;
+}
+
+MyString & MyString::assign(const MyString & str)
 {
 	reserve(strlen(str.strPtr) + 1);
 	strncpy(strPtr, str.strPtr, str.strCapacity);
@@ -70,12 +93,27 @@ const char * MyString::c_str()
 	return strPtr; //Dafür sorgen, dass keine Manipulation vorgenommen werden kann
 }
 
+const char * MyString::c_str() const
+{
+	return strPtr; //Dafür sorgen, dass keine Manipulation vorgenommen werden kann
+}
+
 int MyString::size()
 {
 	return strSize;
 }
 
+int MyString::size() const
+{
+	return strSize;
+}
+
 int MyString::capacity()
+{
+	return strCapacity;
+}
+
+int MyString::capacity() const
 {
 	return strCapacity;
 }
@@ -94,6 +132,14 @@ bool MyString::empty()
 		return false;
 }
 
+bool MyString::empty() const
+{
+	if (strPtr[0] == '\0')
+		return true;
+	else
+		return false;
+}
+
 char & MyString::at(int i)
 {
 	if (i > strSize || i < 1)
@@ -103,7 +149,16 @@ char & MyString::at(int i)
 
 }
 
+
 MyString MyString::operator+(MyString& string)
+{
+	MyString tmp;
+	tmp.assign(*this);
+	tmp.append(string);
+	return(tmp);
+}
+
+MyString MyString::operator+(const MyString& string) const
 {
 	MyString tmp;
 	tmp.assign(*this);
@@ -115,6 +170,20 @@ bool MyString::operator==(const MyString& string)
 {
 	int compareSize = (strSize>string.strSize) ? strSize : string.strSize;
 	
+	if (memcmp(strPtr, string.strPtr, compareSize) == 0)
+	{
+		return(true);
+	}
+	else
+	{
+		return(false);
+	}
+}
+
+bool MyString::operator==(const MyString& string) const
+{
+	int compareSize = (strSize>string.strSize) ? strSize : string.strSize;
+
 	if (memcmp(strPtr, string.strPtr, compareSize) == 0)
 	{
 		return(true);
@@ -140,7 +209,19 @@ MyString& MyString::operator=(MyString& string)
 	 return(assign(string));
 }
 
+MyString& MyString::operator=(const MyString& string)
+{
+	return(assign(string));
+}
+
+
 std::ostream& operator<<(std::ostream& stream, MyString& string)
+{
+	stream << string.c_str();
+	return(stream);
+}
+
+std::ostream& operator<<(std::ostream& stream, const MyString& string)
 {
 	stream << string.c_str();
 	return(stream);

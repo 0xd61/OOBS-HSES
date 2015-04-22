@@ -69,8 +69,8 @@ class Polygonline
 		//Fügt einen anderen Polygonzug diesem hinzu. Es wird eine Tiefe kopie des alten Polygonzugs angelegt.
 		void appendPolygonline(Polygonline& polygonline);
 
-		Polygonline operator+(const Point & point);
-		Polygonline operator+(const Polygonline & line);
+		Polygonline& operator+(const Point & point);
+		Polygonline& operator+(const Polygonline & line);
 	public:
 		//Gibt das erste Element der Liste zurück.
 		PlgElement *getStartElement() const;

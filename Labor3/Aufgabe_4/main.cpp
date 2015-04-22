@@ -34,7 +34,7 @@ int main(void)
 	cout << "p4: " << p4 << endl;
 	Polygonline l1;
 	cout << "l1: " << l1 << endl;
-	//(l1 + p1) + p2;
+	(l1 + p1) + p2;
 	cout << "l1: " << l1 << endl;
 	const Polygonline l2(p4);
 	l1 + l2;

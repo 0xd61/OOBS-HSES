@@ -161,8 +161,6 @@ void Polygonline::print()
 	cout << "|" << endl;
 }
 
-
-
 string Polygonline::toString()
 {
 	stringstream stream;
@@ -190,13 +188,13 @@ string Polygonline::toString()
 	return(stream.str());
 }
 
-Polygonline Polygonline::operator+(const Point & point)
+Polygonline& Polygonline::operator+(const Point & point)
 {
 	this->addPoint(point);
 	return *this;
 }
 
-Polygonline Polygonline::operator+(const Polygonline & line)
+Polygonline& Polygonline::operator+(const Polygonline & line)
 {
 	//TODO: Temp erzeugt, weil der Übergabewert Constant sein muss!
 	Polygonline* temp = new Polygonline(line);

@@ -1,6 +1,5 @@
 #include "Point.h"
 #include <iostream>
-#include <string>
 #include <sstream>
 
 using namespace std;
@@ -65,6 +64,43 @@ string Point::toString()
 	return(stream.str());
 }
 
+Point Point::operator+(const Point & point)
+{
+	this->m_X += point.m_X;
+	this->m_Y += point.m_Y;
+
+	return *this;
+}
+
+Point Point::operator++()
+{
+	++m_X; ++m_Y;
+	return *this;
+}
+
+Point & Point::operator++(int)
+{
+	m_X++; m_Y++;
+	return *this;
+}
+
+Point Point::operator-(const Point & point)
+{
+	this->m_X -= point.m_X;
+	this->m_Y -= point.m_Y;
+
+	return *this;
+}
+
+Point Point::operator-()
+{
+	m_X = -m_X;
+	m_Y = -m_Y;
+
+	return *this;
+}
+
+//FRIENDS
 std::stringstream& operator>>(std::stringstream& stream, Point& point)
 {
 	string str = stream.str();
@@ -72,4 +108,26 @@ std::stringstream& operator>>(std::stringstream& stream, Point& point)
 	point = Point(str);
 
 	return(stream);
+}
+
+std::ostream & operator<<(std::ostream & stream, const Point & point)
+{
+	stream << "(" << point.getX() << ", " << point.getY() << ")" << endl;
+	return stream;
+}
+
+Point operator+(Point & point,double wert)
+{
+	point.m_X += wert;
+	point.m_Y += wert;
+
+	return point;
+}
+
+Point operator+(double wert, Point & point)
+{
+	point.m_X += wert;
+	point.m_Y += wert;
+
+	return point;
 }

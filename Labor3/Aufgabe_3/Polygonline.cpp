@@ -189,27 +189,3 @@ string Polygonline::toString()
 
 	return(stream.str());
 }
-
-std::ostream & operator<<(std::ostream & stream, Polygonline polygon)
-{
-	PlgElement *iterator = polygon.getStartElement();
-	stream << "|";
-
-	while (iterator)
-	{
-		stream << iterator->getPoint().toString();
-
-		//Nur einen Bindestrich schreiben wenn es auch ein nächstes Element gibt.
-		if (iterator->getNext() != nullptr)
-		{
-			stream << " - ";
-		}
-
-		iterator = iterator->getNext();
-
-
-	}
-
-	stream << "|";
-	return stream;
-}

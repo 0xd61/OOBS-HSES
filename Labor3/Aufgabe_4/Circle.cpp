@@ -5,13 +5,13 @@
 using namespace std;
 
 Circle::Circle() : m_Centre(), m_Radius(0)
-{
-}
+{}
 
 Circle::Circle(Point& point) : m_Centre(point), m_Radius(0)
-{
-	
-}
+{}
+
+Circle::Circle(Point & point, double radius) : m_Centre(point), m_Radius(radius)
+{}
 
 Circle::Circle(std::string& str)
 {
@@ -73,4 +73,10 @@ std::stringstream& operator>>(std::stringstream& stream, Circle& circle)
 	circle = Circle(str);
 
 	return(stream);
+}
+
+std::ostream & operator<<(std::ostream & stream, const Circle & circle)
+{
+	stream << "<(" << circle.GetCentre().getX() << ", " << circle.GetCentre().getY() << "), " << circle.GetRadius() << ">";
+	return stream;
 }

@@ -190,3 +190,48 @@ string Polygonline::toString()
 	return(stream.str());
 }
 
+Polygonline Polygonline::operator+(const Point & point)
+{
+	this->addPoint(point);
+	return *this;
+}
+
+Polygonline Polygonline::operator+(const Polygonline & line)
+{
+	//TODO: Temp erzeugt, weil der Übergabewert Constant sein muss!
+	Polygonline* temp = new Polygonline(line);
+
+	this->appendPolygonline(*temp);
+
+	if (temp)
+	{
+		delete temp;
+		temp = NULL;
+	}
+
+	return *this;
+}
+
+std::ostream & operator<<(std::ostream & stream, const Polygonline & polygon)
+{
+	PlgElement *iterator = polygon.getStartElement();
+	stream << "|";
+
+	while (iterator)
+	{
+		stream << iterator->getPoint().toString();
+
+		//Nur einen Bindestrich schreiben wenn es auch ein nächstes Element gibt.
+		if (iterator->getNext() != nullptr)
+		{
+			stream << " - ";
+		}
+
+		iterator = iterator->getNext();
+
+
+	}
+
+	stream << "|";
+	return stream;
+}

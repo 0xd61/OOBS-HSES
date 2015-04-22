@@ -203,8 +203,8 @@ Polygonline& Polygonline::operator+(const Polygonline & line)
 
 	if (temp)
 	{
-		delete temp;
-		temp = NULL;
+	/*	delete temp;
+		temp = NULL;*/
 	}
 
 	return *this;

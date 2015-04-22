@@ -7,13 +7,10 @@ double Fahrzeug::summeKm = 0;
 //--------------------------------------------------------------------------------------
 //Standard Konstruktor.
 //--------------------------------------------------------------------------------------
-Fahrzeug::Fahrzeug(char* kennzeichen)
+Fahrzeug::Fahrzeug(char* kennzeichen) : vin(reinterpret_cast<unsigned int>(this))
 {
 	//Kennzeichen speichern.
 	kz = MyString(kennzeichen);
-
-	//Eindeutige ID vergeben. Nimmt die Adresse des objekts als ID.
-	vin = reinterpret_cast<unsigned int>(this);
 }
 
 //--------------------------------------------------------------------------------------

@@ -27,7 +27,7 @@ class Fahrzeug
 		MyString kz;
 
 		///<summary>Vehicle Identification Number.</summary>
-		int vin;
+		const int vin;
 
 		///<summary>Gefahrene Kilometer.</summary>
 		double km;

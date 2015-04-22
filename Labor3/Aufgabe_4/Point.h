@@ -23,8 +23,8 @@ class Point
 		std::string toString();
 
 		Point operator+(const Point & point);
-		Point operator++();
-		Point & operator++(int);
+		Point & operator++();
+		Point operator++(int);
 		Point operator-(const Point & point);
 		Point operator-();
 

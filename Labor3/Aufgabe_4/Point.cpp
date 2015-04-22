@@ -72,16 +72,17 @@ Point Point::operator+(const Point & point)
 	return *this;
 }
 
-Point Point::operator++()
+Point & Point::operator++()
 {
 	++m_X; ++m_Y;
 	return *this;
 }
 
-Point & Point::operator++(int)
+Point Point::operator++(int)
 {
+	Point p = *this;
 	m_X++; m_Y++;
-	return *this;
+	return p;
 }
 
 Point Point::operator-(const Point & point)

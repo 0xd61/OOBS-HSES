@@ -29,10 +29,10 @@ int main(void) {
 	cin.getline(input,100);
 	object = string(input);
 
-	Point p = Point(object);
+	Polygonline p = Polygonline(object);
 
 	cout << endl << "Punkt: " << endl;
-	cout << p.toString();
+	cout << p.toString() << endl;
 
 	return 0;
 }

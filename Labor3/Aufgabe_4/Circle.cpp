@@ -74,9 +74,3 @@ std::stringstream& operator>>(std::stringstream& stream, Circle& circle)
 
 	return(stream);
 }
-
-std::ostream & operator<<(std::ostream & stream, Circle circle)
-{
-	stream << "<(" << circle.GetCentre().getX() << ", " << circle.GetCentre().getY() << "), " << circle.GetRadius() << ">";
-	return stream;
-}

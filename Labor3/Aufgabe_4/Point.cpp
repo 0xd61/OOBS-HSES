@@ -73,9 +73,3 @@ std::stringstream& operator>>(std::stringstream& stream, Point& point)
 
 	return(stream);
 }
-
-std::ostream & operator<<(std::ostream & stream, Point point)
-{
-	stream << "(" << point.getX() << ", " << point.getY() << ")" << endl;
-	return stream;
-}

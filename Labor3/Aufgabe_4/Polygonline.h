@@ -4,7 +4,6 @@
 //Listen Element für eine einfach verkettete Liste.
 class PlgElement
 {
-	friend std::ostream & operator<<(std::ostream stream, Polygonline polygon);
 	public:
 		//Standart Konstruktor.
 		PlgElement();
@@ -42,6 +41,8 @@ class PlgElement
 class Polygonline
 {
 	public:
+		friend std::ostream & operator<<(std::ostream & stream, const Polygonline & polygon);
+
 		//Konstruktor.
 		Polygonline();
 
@@ -68,6 +69,8 @@ class Polygonline
 		//Fügt einen anderen Polygonzug diesem hinzu. Es wird eine Tiefe kopie des alten Polygonzugs angelegt.
 		void appendPolygonline(Polygonline& polygonline);
 
+		Polygonline operator+(const Point & point);
+		Polygonline operator+(const Polygonline & line);
 	public:
 		//Gibt das erste Element der Liste zurück.
 		PlgElement *getStartElement() const;

@@ -92,7 +92,7 @@ Polygonline& Polygonline::addPoint(Point point)
 //--------------------------------------------------------------------------------------
 //Fügt einen anderen Polygonzug diesem hinzu. Es wird eine Tiefe kopie des alten Polygonzugs angelegt.
 //--------------------------------------------------------------------------------------
-void Polygonline::appendPolygonline(Polygonline& polygonline)
+void Polygonline::appendPolygonline(const Polygonline& polygonline)
 {
 	PlgElement *iterator = polygonline.getStartElement();
 
@@ -196,16 +196,7 @@ Polygonline& Polygonline::operator+(const Point & point)
 
 Polygonline& Polygonline::operator+(const Polygonline & line)
 {
-	//TODO: Temp erzeugt, weil der Übergabewert Constant sein muss!
-	Polygonline* temp = new Polygonline(line);
-
-	this->appendPolygonline(*temp);
-
-	if (temp)
-	{
-	/*	delete temp;
-		temp = NULL;*/
-	}
+	this->appendPolygonline(line);
 
 	return *this;
 }

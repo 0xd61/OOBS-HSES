@@ -8,8 +8,7 @@ using namespace std;
 //Standart Konstruktor.
 //--------------------------------------------------------------------------------------
 Polygonline::Polygonline() : m_StartElement(nullptr), m_LastElement(nullptr)
-{
-}
+{}
 
 //--------------------------------------------------------------------------------------
 //Konstruktor.
@@ -160,7 +159,9 @@ void Polygonline::print()
 
 	cout << "|" << endl;
 }
-
+//--------------------------------------------------------------------------------------
+//Konvertiert die Poygonlinie in einen String.
+//--------------------------------------------------------------------------------------
 string Polygonline::toString()
 {
 	stringstream stream;
@@ -188,12 +189,18 @@ string Polygonline::toString()
 	return(stream.str());
 }
 
+//--------------------------------------------------------------------------------------
+//Bei Polygon + Point einen Punkt hinzufuegen.
+//--------------------------------------------------------------------------------------
 Polygonline& Polygonline::operator+(const Point & point)
 {
 	this->addPoint(point);
 	return *this;
 }
 
+//--------------------------------------------------------------------------------------
+//Bei Polygon + Polygon die Linien zusammenfuegen.
+//--------------------------------------------------------------------------------------
 Polygonline& Polygonline::operator+(const Polygonline & line)
 {
 	this->appendPolygonline(line);
@@ -201,6 +208,10 @@ Polygonline& Polygonline::operator+(const Polygonline & line)
 	return *this;
 }
 
+//FRIENDS
+//--------------------------------------------------------------------------------------
+//Die Polygonlinie als stream zurueckgeben.
+//--------------------------------------------------------------------------------------
 std::ostream & operator<<(std::ostream & stream, const Polygonline & polygon)
 {
 	PlgElement *iterator = polygon.getStartElement();

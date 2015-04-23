@@ -5,7 +5,7 @@
 class PlgElement
 {
 	public:
-		//Standart Konstruktor.
+		//Standard Konstruktor.
 		PlgElement();
 
 		//Konstruktor.
@@ -41,12 +41,14 @@ class PlgElement
 class Polygonline
 {
 	public:
+		//FRIENDS. (Operatoren)
+		//Polygon in Stream ausgeben.
 		friend std::ostream & operator<<(std::ostream & stream, const Polygonline & polygon);
 
-		//Konstruktor.
+		//Standard Konstruktor.
 		Polygonline();
 
-		//Standart Konstruktor.
+		//Konstruktor.
 		Polygonline(Point point);
 
 		Polygonline(std::string& str);
@@ -69,6 +71,8 @@ class Polygonline
 		//Fügt einen anderen Polygonzug diesem hinzu. Es wird eine Tiefe kopie des alten Polygonzugs angelegt.
 		void appendPolygonline(const Polygonline& polygonline);
 
+		//Operatoren.
+		//
 		Polygonline& operator+(const Point & point);
 		Polygonline& operator+(const Polygonline & line);
 	public:

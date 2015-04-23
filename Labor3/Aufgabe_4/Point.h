@@ -8,8 +8,8 @@ class Point
 {
 	friend std::ostream & operator<<(std::ostream & stream, const Point& point);
 	friend std::stringstream& operator>>(std::stringstream& stream, Point& point);
-	friend Point operator+(Point & point,double wert);
-	friend Point operator+(double wert, Point & point);
+	friend Point & operator+(Point & point,double wert);
+	friend Point & operator+(double wert, Point & point);
 
 	public:
 		Point();
@@ -22,11 +22,11 @@ class Point
 
 		std::string toString();
 
-		Point operator+(const Point & point);
+		Point & operator+(const Point & point);
 		Point & operator++();
 		Point operator++(int);
-		Point operator-(const Point & point);
-		Point operator-();
+		Point & operator-(const Point & point);
+		Point & operator-();
 
 	public:
 		double getX()const{ return(m_X); }

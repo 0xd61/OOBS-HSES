@@ -64,7 +64,7 @@ string Point::toString()
 	return(stream.str());
 }
 
-Point Point::operator+(const Point & point)
+Point & Point::operator+(const Point & point)
 {
 	this->m_X += point.m_X;
 	this->m_Y += point.m_Y;
@@ -85,7 +85,7 @@ Point Point::operator++(int)
 	return p;
 }
 
-Point Point::operator-(const Point & point)
+Point & Point::operator-(const Point & point)
 {
 	this->m_X -= point.m_X;
 	this->m_Y -= point.m_Y;
@@ -93,7 +93,7 @@ Point Point::operator-(const Point & point)
 	return *this;
 }
 
-Point Point::operator-()
+Point & Point::operator-()
 {
 	m_X = -m_X;
 	m_Y = -m_Y;
@@ -117,7 +117,7 @@ std::ostream & operator<<(std::ostream & stream, const Point & point)
 	return stream;
 }
 
-Point operator+(Point & point,double wert)
+Point & operator+(Point & point,double wert)
 {
 	point.m_X += wert;
 	point.m_Y += wert;
@@ -125,7 +125,7 @@ Point operator+(Point & point,double wert)
 	return point;
 }
 
-Point operator+(double wert, Point & point)
+Point & operator+(double wert, Point & point)
 {
 	point.m_X += wert;
 	point.m_Y += wert;

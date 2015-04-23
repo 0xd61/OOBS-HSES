@@ -4,9 +4,15 @@
 
 using namespace std;
 
+//--------------------------------------------------------------------------------------
+//Standard Konstruktor.
+//--------------------------------------------------------------------------------------
 Circle::Circle() : m_Centre(), m_Radius(0)
 {}
 
+//--------------------------------------------------------------------------------------
+//Konstruktor.
+//--------------------------------------------------------------------------------------
 Circle::Circle(Point& point) : m_Centre(point), m_Radius(0)
 {}
 
@@ -36,16 +42,23 @@ Circle::Circle(std::string& str)
 	m_Radius = stod(radius);
 }
 
+//--------------------------------------------------------------------------------------
+//Destruktor.
+//--------------------------------------------------------------------------------------
 Circle::~Circle()
-{
-	
-}
+{}
 
+//--------------------------------------------------------------------------------------
+//Verschiebt die Koordianten des Cricles.
+//--------------------------------------------------------------------------------------
 void Circle::move(const double dx, const double dy)
 {
 	m_Centre.move(dx, dy);
 }
 
+//--------------------------------------------------------------------------------------
+//Gibt die Punkte und den Radius des Circles aus.
+//--------------------------------------------------------------------------------------
 void Circle::print(bool useEndl)
 {
 	if (useEndl)
@@ -58,6 +71,9 @@ void Circle::print(bool useEndl)
 	}
 }
 
+//--------------------------------------------------------------------------------------
+//Konvertiert den Point in einen String.
+//--------------------------------------------------------------------------------------
 string Circle::toString()
 {
 	stringstream stream;
@@ -66,6 +82,10 @@ string Circle::toString()
 	return(stream.str());
 }
 
+//FRIENDS
+//--------------------------------------------------------------------------------------
+//Circle von Stream einlesen.
+//--------------------------------------------------------------------------------------
 std::stringstream& operator>>(std::stringstream& stream, Circle& circle)
 {
 	string str = stream.str();
@@ -75,6 +95,9 @@ std::stringstream& operator>>(std::stringstream& stream, Circle& circle)
 	return(stream);
 }
 
+//--------------------------------------------------------------------------------------
+//Circle in Stream ausgeben.
+//--------------------------------------------------------------------------------------
 std::ostream & operator<<(std::ostream & stream, const Circle & circle)
 {
 	stream << "<(" << circle.GetCentre().getX() << ", " << circle.GetCentre().getY() << "), " << circle.GetRadius() << ">";

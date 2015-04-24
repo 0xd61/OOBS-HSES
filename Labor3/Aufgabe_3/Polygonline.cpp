@@ -33,7 +33,7 @@ Polygonline::Polygonline(std::string& str)
 	}
 
 
-	int pointBegin = 0;
+	int pointBegin = -1;
 	int pointEnd = 0;
 
 	for (int i = 0; i < numberOfPoints; i++)
@@ -41,7 +41,7 @@ Polygonline::Polygonline(std::string& str)
 		pointBegin = str.find("(",pointBegin+1)+1;
 		pointEnd = str.find(")",pointEnd+1);
 
-		string tmp = str.substr(pointBegin, pointEnd-pointBegin);
+		string tmp = str.substr(pointBegin, pointEnd - pointBegin);
 
 		addPoint(Point(tmp));
 		

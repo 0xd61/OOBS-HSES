@@ -39,7 +39,7 @@ void Medium::print() const
 	if (ausleiher)
 	{
 		ausleiher->print();
-		std::cout << " von: " << von << " bis: " << bis << endl;
+		std::cout << " von: " << von << " bis: " << bis;
 	}
 	else
 		std::cout << "kein";

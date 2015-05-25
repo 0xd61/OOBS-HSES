@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="Bibliothek.hpp" />
+    <ClInclude Include="Buch.hpp" />
+    <ClInclude Include="Datum.hpp" />
+    <ClInclude Include="Dozent.hpp" />
+    <ClInclude Include="DVD.hpp" />
+    <ClInclude Include="Medium.hpp" />
+    <ClInclude Include="Person.hpp" />
+    <ClInclude Include="Student.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Bibliothek.cpp" />
+    <ClCompile Include="Buch.cpp" />
+    <ClCompile Include="Datum.cpp" />
+    <ClCompile Include="Dozent.cpp" />
+    <ClCompile Include="DVD.cpp" />
+    <ClCompile Include="Medium.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Student.cpp" />
+  </ItemGroup>
+</Project>

@@ -44,7 +44,8 @@ void Bibliothek::mediumSuchen(string suchwort)
 // eintragen mit von-Datum d und bis-Datum d+p.ausleihdauer
 void Bibliothek::mediumAusleihen(int nr, Person & p, Datum d)
 {
-	medien[nr]->ausleihen(p,d, d + p.getAusleihdauer());
+	Datum tmp = d; // Temp. Datum, da bei Operation d+p d verändert wird und somit auch das Startdatum geändert wird
+	medien[nr]->ausleihen(p,tmp, d + p.getAusleihdauer());
 }
 // alle Medien in der Konsole ausgeben
 void Bibliothek::print() const

@@ -40,35 +40,37 @@ int main() {
 	cout << "a.f() "; 
 	a.f();    // Überlädt ... Überdeckt ... Redefiniert ...
 	cout << "b.f() "; 
-	b.f();    // Überlädt ... Überdeckt ... Redefiniert ... 
+	b.f();    // A::f
 	cout << "a.g(1.2) "; 
-	a.g(1.2); // Überlädt ... Überdeckt ... Redefiniert ... 
-	cout << "b.g(1.2) "; 
-	b.g(1.2); // Überlädt ... Überdeckt ... Redefiniert ... 
+	a.g(1.2); // Überlädt 
+	//cout << "b.g(1.2) "; 
+	//b.g(1.2); // Überdeckt double statt int
 	cout << "a.g(1) "; 
-	a.g(1);   // Überlädt ... Überdeckt ... Redefiniert ... 
+	a.g(1);   // Überlädt 
 	cout << "b.g(1) "; 
-	b.g(1);   // Überlädt ... Überdeckt ... Redefiniert ... 
+	b.g(1);   // Überdeckt 
 	cout << "a.g('a') "; 
-	a.g('a'); // Überlädt ... Überdeckt ... Redefiniert ... 
+	a.g('a'); // Überlädt 
 	cout << "b.g('a') "; 
-	b.g('a'); // Überlädt ... Überdeckt ... Redefiniert ... 
+	b.g('a'); // Überdeckt
 	cout << "a.g(\"a\") "; 
-	a.g("a"); // Überlädt ... Überdeckt ... Redefiniert ... 
-	cout << "b.g(\"a\") "; 
-	b.g("a"); // Überlädt ... Überdeckt ... Redefiniert ...
+	a.g("a"); // Überlädt 
+	//cout << "b.g(\"a\") "; 
+	//b.g("1"); //Überdeckt Fehler: string statt int
 	cout << "a.h(1) "; 
-	a.h(1);   // Überlädt ... Überdeckt ... Redefiniert ... 
+	a.h(1);   // Überlädt
 	cout << "b.h(1) "; 
-	b.h(1);   // Überlädt ... Überdeckt ... Redefiniert ...
+	b.h(1);   // Überdeckt
 	cout << "a.h('a') "; 
-	a.h('a'); // Überlädt ... Überdeckt ... Redefiniert ... 
+	a.h('a'); // Überlädt
 	cout << "b.h('a') "; 
-	b.h('a'); // Überlädt ... Überdeckt ... Redefiniert ...
+	b.h('a'); // Überlädt
 	cout << "a.h(\"a\") "; 
-	a.h("a"); // Überlädt ... Überdeckt ... Redefiniert ... 
+	a.h("a"); // Überlädt 
 	cout << "b.h(\"a\") "; 
-	b.h("a"); // Überlädt ... Überdeckt ... Redefiniert ...
+	b.h("a"); // Redefiniert
+	
+	getchar();
 	return 0;
 }
 

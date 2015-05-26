@@ -3,14 +3,19 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="Friends.cpp" />
     <ClCompile Include="PlgElement.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Polygonline.cpp" />
+    <ClCompile Include="ObjectCounter.cpp" />
+    <ClCompile Include="DrawingObject.cpp" />
+    <ClCompile Include="OneDimObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Polygonline.h" />
+    <ClInclude Include="ObjectCounter.h" />
+    <ClInclude Include="DrawingObject.h" />
+    <ClInclude Include="OneDimObject.h" />
   </ItemGroup>
 </Project>

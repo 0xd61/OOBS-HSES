@@ -1,5 +1,6 @@
 #pragma once
 #include "Point.h"
+#include "OneDimObject.h"
 
 //Listen Element für eine einfach verkettete Liste.
 class PlgElement
@@ -38,7 +39,7 @@ class PlgElement
 };
 
 //Klasse für einen Polygonzug.
-class Polygonline
+class Polygonline : OneDimObject
 {
 	public:
 		//FRIENDS. (Operatoren)

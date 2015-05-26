@@ -2,9 +2,10 @@
 #include <string>
 #include <istream>
 #include <ostream>
+#include "DrawingObject.h"
 
 
-class Point
+class Point : public DrawingObject
 {
 	//FRIENDS
 	//Punkt in Stream ausgeben.

@@ -1,11 +1,11 @@
 #include <iostream>
-#include "Circle.hpp"
-#include "Polygonline.hpp"
+#include "Circle.h"
+#include "Polygonline.h"
 using namespace std;
 
 bool debugConstructor = true;
 
-unsigned int ObjectCounter::maxId = 0;
+unsigned int ObjectCounter::maxID = 0;
 unsigned int ObjectCounter::number = 0;
 
 // Hauptprogramm

@@ -1,7 +1,8 @@
 #pragma once
 #include "Point.h"
+#include "OneDimObject.h"
 
-class Circle
+class Circle : public OneDimObject
 {
 	//FRIENDS
 	//Circle in Stream ausgeben.

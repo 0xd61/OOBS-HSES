@@ -79,14 +79,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="Friends.cpp" />
+    <ClCompile Include="DrawingObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjectCounter.cpp" />
+    <ClCompile Include="OneDimObject.cpp" />
     <ClCompile Include="PlgElement.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Polygonline.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="DrawingObject.h" />
+    <ClInclude Include="ObjectCounter.h" />
+    <ClInclude Include="OneDimObject.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Polygonline.h" />
   </ItemGroup>

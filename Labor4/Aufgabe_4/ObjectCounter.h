@@ -8,9 +8,9 @@ class ObjectCounter
 	public:
 		unsigned int getId();
 		unsigned int getMaxId();
-		unsigned int getNumber();
+		static unsigned int getNumber();
 
-	private:
+	protected:
 		unsigned int m_ID;
 		static unsigned int maxID;
 		static unsigned int number;

@@ -53,7 +53,7 @@ public:
 	A(int a = 0xA) : a(a) {}
 };
 
-class B : virtual public A {
+class B :virtual public A {
 public:
 	int b; 
 	B(int a = 0xBA, int b = 0xB) : A(a), b(b) {}

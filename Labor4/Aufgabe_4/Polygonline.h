@@ -39,7 +39,7 @@ class PlgElement
 };
 
 //Klasse für einen Polygonzug.
-class Polygonline : OneDimObject
+class Polygonline :public OneDimObject
 {
 	public:
 		//FRIENDS. (Operatoren)

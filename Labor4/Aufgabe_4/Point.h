@@ -5,7 +5,7 @@
 #include "DrawingObject.h"
 
 
-class Point : public DrawingObject
+class Point :virtual public DrawingObject
 {
 	//FRIENDS
 	//Punkt in Stream ausgeben.

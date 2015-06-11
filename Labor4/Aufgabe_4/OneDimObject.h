@@ -1,6 +1,6 @@
 #pragma once
 #include "DrawingObject.h"
-class OneDimObject : public DrawingObject
+class OneDimObject : virtual public DrawingObject
 {
 public:
 	OneDimObject();

@@ -1,6 +1,7 @@
 #include "Polygonline.h"
 #include <iostream>
 #include <sstream>
+#include <Windows.h>
 
 using namespace std;
 
@@ -8,7 +9,16 @@ using namespace std;
 //Standart Konstruktor.
 //--------------------------------------------------------------------------------------
 Polygonline::Polygonline() : m_StartElement(nullptr), m_LastElement(nullptr)
-{}
+{
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		cout << "Konstruktor der Klasse <Polygonline>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
+}
 
 //--------------------------------------------------------------------------------------
 //Konstruktor.
@@ -17,6 +27,15 @@ Polygonline::Polygonline(Point point)
 {
 	m_StartElement = new PlgElement(point);
 	m_LastElement = m_StartElement;
+
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		cout << "Konstruktor der Klasse <Polygonline>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
 }
 
 Polygonline::Polygonline(std::string& str)
@@ -46,6 +65,15 @@ Polygonline::Polygonline(std::string& str)
 		
 	}
 
+
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		cout << "Konstruktor der Klasse <Polygonline>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
 	
 }
 
@@ -65,6 +93,15 @@ Polygonline::~Polygonline()
 	if (m_LastElement)
 	{
 		m_LastElement = nullptr;
+	}
+
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+		cout << "´Dekonstruktor der Klasse <Polygonline>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	}
 }
 

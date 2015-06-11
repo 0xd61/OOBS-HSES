@@ -28,6 +28,9 @@ class Point : public DrawingObject
 		Point(const double x, const double y);
 		Point(std::string& str);
 
+		//KOPIERKONSTRUKTOR.
+		Point(const Point &obj);
+
 		//Destruktor.
 		~Point();
 

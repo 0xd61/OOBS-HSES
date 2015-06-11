@@ -1,6 +1,7 @@
 #include "Circle.h"
 #include <iostream>
 #include <sstream>
+#include <Windows.h>
 
 using namespace std;
 
@@ -8,16 +9,43 @@ using namespace std;
 //Standard Konstruktor.
 //--------------------------------------------------------------------------------------
 Circle::Circle() : m_Centre(), m_Radius(0)
-{}
+{
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		cout << "Konstruktor der Klasse <Circle>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
+}
 
 //--------------------------------------------------------------------------------------
 //Konstruktor.
 //--------------------------------------------------------------------------------------
 Circle::Circle(Point& point) : m_Centre(point), m_Radius(0)
-{}
+{
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		cout << "Konstruktor der Klasse <Circle>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
+}
 
 Circle::Circle(Point & point, double radius) : m_Centre(point), m_Radius(radius)
-{}
+{
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		cout << "Konstruktor der Klasse <Circle>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
+}
 
 Circle::Circle(std::string& str)
 {
@@ -40,13 +68,32 @@ Circle::Circle(std::string& str)
 
 	m_Centre = p;
 	m_Radius = stod(radius);
+
+
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+		cout << "Konstruktor der Klasse <Circle>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
 }
 
 //--------------------------------------------------------------------------------------
 //Destruktor.
 //--------------------------------------------------------------------------------------
 Circle::~Circle()
-{}
+{
+	extern bool debugConstructor;
+
+	if (debugConstructor)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+		cout << "Dekonstruktor der Klasse <Circle>, Objekt: <" << m_ID << ">" << endl;
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
+}
 
 //--------------------------------------------------------------------------------------
 //Verschiebt die Koordianten des Cricles.

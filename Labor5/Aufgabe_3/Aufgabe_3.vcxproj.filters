@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="MyList.h" />
+    <ClInclude Include="MyData.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="DrawingObject.h" />
+    <ClInclude Include="ObjectCounter.h" />
+    <ClInclude Include="OneDimObject.h" />
+    <ClInclude Include="Point.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MyList.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="DrawingObject.cpp" />
+    <ClCompile Include="ObjectCounter.cpp" />
+    <ClCompile Include="OneDimObject.cpp" />
+    <ClCompile Include="Point.cpp" />
+  </ItemGroup>
+</Project>

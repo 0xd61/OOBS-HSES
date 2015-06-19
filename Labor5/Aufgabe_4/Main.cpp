@@ -11,9 +11,9 @@
 
 using namespace std;
 
-bool debugConstructor = false;
+bool debugConstructor = true;
 unsigned int ObjectCounter::maxID = 0;
-unsigned int ObjectCounter::number = 01;
+unsigned int ObjectCounter::number = 0;
 
 enum OBJECT_TYPE
 {
@@ -73,6 +73,7 @@ int main()
 	cout << "Wieviele Objekte wollen Sie einlesen?" << endl;
 	cout << "Anzahl: ";
 	cin >> anzahl;
+	fflush(stdin);
 
 	string objectAsString[4];
 	objectAsString[0] = "(9.0,9.0)";
@@ -115,8 +116,8 @@ int main()
 		
 		objects[i]->print(true);
 	}
+	cout << "Anzahl der Objekte: " << objects[0]->getNumber() << endl;
 
-	getchar();
 	getchar();
 	return 0;
 }

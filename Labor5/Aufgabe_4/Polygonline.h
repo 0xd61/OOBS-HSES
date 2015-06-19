@@ -10,7 +10,7 @@ class PlgElement
 		PlgElement();
 
 		//Konstruktor.
-		PlgElement(Point point);
+		PlgElement(Point& point);
 
 
 		//Dekonstruktor.
@@ -27,7 +27,7 @@ class PlgElement
 		void setNext(PlgElement *next);
 
 		//Setzt den Point des aktuellen Listen Elements.
-		void setPoint(Point point);
+		void setPoint(Point& point);
 
 	private:
 
@@ -50,7 +50,7 @@ class Polygonline : public OneDimObject
 		Polygonline();
 
 		//Konstruktor.
-		Polygonline(Point point);
+		Polygonline(Point& point);
 
 		Polygonline(std::string& str);
 

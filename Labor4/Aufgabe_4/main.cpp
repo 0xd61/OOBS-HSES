@@ -6,7 +6,7 @@ using namespace std;
 bool debugConstructor = true;
 
 unsigned int ObjectCounter::maxID = 0;
-unsigned int ObjectCounter::number = 01;
+unsigned int ObjectCounter::number = 0;
 
 // Hauptprogramm
 int main(void)

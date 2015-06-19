@@ -34,11 +34,11 @@ class Circle : public OneDimObject
 
 	public:
 		//Getter
-		Point GetCentre()const{ return(m_Centre); }
+		Point& GetCentre()const{ return(const_cast<Point&>(m_Centre)); }
 		double GetRadius()const{ return(m_Radius); }
 
 		//Setter
-		void setCentre(const Point centre){ m_Centre = centre; }
+		void setCentre(const Point& centre){ m_Centre = centre; }
 		void setRadius(const double radius){ m_Radius = radius; }
 
 	private:

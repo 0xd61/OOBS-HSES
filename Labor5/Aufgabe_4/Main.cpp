@@ -1,6 +1,7 @@
 #include<iostream>
 #include <string>
 #include <regex>
+#include <exception>
 
 #include "Point.h"
 #include "Rectangle.h"
@@ -38,8 +39,7 @@ OBJECT_TYPE IndicateObject(string objectAsString)
 	regex polygonLine("\\|" + whitespace + "(" + regexStringPoint + whitespace + "\-" + whitespace + ")*" + regexStringPoint + whitespace + "\\|");
 	regex rectangle("\\[" + whitespace + regexStringPoint + whitespace +"\," +whitespace +regexStringPoint +whitespace +"\\]");
 
-
-
+	
 	if (regex_match(objectAsString, point))
 	{
 		//cout << "Point gefunden" << endl;
@@ -78,11 +78,8 @@ int main()
 	objectAsString[0] = "(9.0,9.0)";
 	objectAsString[1] = "< (  9.0,  9.0)  ,   10.1   >";
 	objectAsString[2] = "|(1.0,1.0) - (8.0,2.0) - (3.0,3.0) - (4.0,4.0)|";
-	objectAsString[3] = "[  (9.0,9.0) ,(8.0,8.0)]";
-
-
-
-
+	objectAsString[3] = "[  (9.0,9.0) ,(8.0, 8.0)]";
+	
 	// Objekte einlesen
 	for (int i = 0; i<anzahl; i++)
 	{
@@ -93,22 +90,20 @@ int main()
 
 		switch (type)
 		{
-		case POINT: objects[i] = new Point(objectAsString[i]);
-			break;
+			case POINT: objects[i] = new Point(objectAsString[i]);
+				break;
 
-		case CIRCLE: objects[i] = new Circle(objectAsString[i]);
-			break;
+			case CIRCLE: objects[i] = new Circle(objectAsString[i]);
+				break;
 
-		case POLYGONLINE: objects[i] = new Polygonline(objectAsString[i]);
-			break;
+			case POLYGONLINE: objects[i] = new Polygonline(objectAsString[i]);
+				break;
 
-		case RECTANGLE: objects[i] = new Rectangle(objectAsString[i]);
-			break;
+			case RECTANGLE: objects[i] = new Rectangle(objectAsString[i]);
+				break;
 
-		case NO_TYPE: cout << "Kein richtiger Typ eingegeben" << endl;
-			break;
-		default:
-			break;
+			case NO_TYPE: cout << "Kein richtiger Typ eingegeben" << endl;
+				break;
 		}
 
 		

@@ -23,7 +23,7 @@ Polygonline::Polygonline() : m_StartElement(nullptr), m_LastElement(nullptr)
 //--------------------------------------------------------------------------------------
 //Konstruktor.
 //--------------------------------------------------------------------------------------
-Polygonline::Polygonline(Point point)
+Polygonline::Polygonline(Point& point)
 {
 	m_StartElement = new PlgElement(point);
 	m_LastElement = m_StartElement;

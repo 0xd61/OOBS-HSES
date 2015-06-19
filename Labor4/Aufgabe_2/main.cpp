@@ -48,7 +48,7 @@ int main() {
 	cout << "a.g(1) "; 
 	a.g(1);   // Überlädt 
 	cout << "b.g(1) "; 
-	b.g(1);   // Überdeckt 
+	b.g(1);   // Überlädt 
 	cout << "a.g('a') "; 
 	a.g('a'); // Überlädt 
 	cout << "b.g('a') "; 

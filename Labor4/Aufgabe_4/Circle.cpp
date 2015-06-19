@@ -45,6 +45,8 @@ Circle::Circle(Point & point, double radius) : m_Centre(point), m_Radius(radius)
 		cout << "Konstruktor der Klasse <Circle>, Objekt: <" << m_ID << ">" << endl;
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	}
+
+
 }
 
 Circle::Circle(std::string& str)

@@ -97,7 +97,7 @@ class C3 : public B
 
 class D1 :  public C1, public C2 {
 public:
-	D1(int C1_a = 0xD1C1A, int C2_a = 0xD1C2A, int C1_b = 0xD1C1B, int C2_b = 0xD1C2B) :A(), B(), C1(C1_a, C1_b), C2(C2_a, C2_b) {}
+	D1(int C1_a = 0xD1C1A, int C2_a = 0xD1C2A, int C1_b = 0xD1C1B, int C2_b = 0xD1C2B) : A(0xD1A), B(), C1(C1_a, C1_b), C2(C2_a, C2_b) {}
 	
 	void print() 
 	{

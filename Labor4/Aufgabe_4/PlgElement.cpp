@@ -10,7 +10,7 @@ PlgElement::PlgElement() : m_Next(nullptr), m_Point()
 //--------------------------------------------------------------------------------------
 //Konstruktor.
 //--------------------------------------------------------------------------------------
-PlgElement::PlgElement(Point point) : m_Next(nullptr), m_Point(point)
+PlgElement::PlgElement(Point& point) : m_Next(nullptr), m_Point(point)
 {
 }
 
@@ -53,7 +53,7 @@ void PlgElement::setNext(PlgElement *next)
 //--------------------------------------------------------------------------------------
 //Setzt den Point des aktuellen Listen Elements.
 //--------------------------------------------------------------------------------------
-void PlgElement::setPoint(Point point)
+void PlgElement::setPoint(Point& point)
 {
 	m_Point = point;
 }

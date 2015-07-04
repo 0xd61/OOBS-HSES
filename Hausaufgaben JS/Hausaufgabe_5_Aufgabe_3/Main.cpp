@@ -4,7 +4,7 @@
 using namespace std;
 
 unsigned int ObjectCounter::maxID = 0;
-unsigned int ObjectCounter::number = 01;
+unsigned int ObjectCounter::number = 0;
 
 int main() 
 {

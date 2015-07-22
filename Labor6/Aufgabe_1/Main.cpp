@@ -23,7 +23,7 @@ int main() {
 	}
 	catch (DrawingObject::IdTooHigh &e)
 	{
-		cout << endl << "EXCEPTION: IdTooHigh" << e.getID() << endl;
+		cout << endl << "EXCEPTION: IdTooHigh " << e.getID() << endl;
 	}
 	
 	// Punkt ausgeben

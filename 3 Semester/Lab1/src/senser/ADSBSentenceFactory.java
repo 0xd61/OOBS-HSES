@@ -17,10 +17,12 @@ public class ADSBSentenceFactory implements ADSBSentenceFactoryInterface
 			String timestamp = json.split("\\d+\\.\\d+")[0];
 			String dfca 	 = json.split("\\*\\w{2}")[0].replace("*","");
 
+			//TODO: Parsen
 			String jsonNEU = json.split("\\*")[1];
-			String icao 	 = jsonNEU.substring(2,8);
-			String payload 	 = jsonNEU.substring(9,23);
-			String parity 	 = jsonNEU.substring(24,30);
+
+			String icao 	 = jsonNEU.substring(1,7);
+			String payload 	 = jsonNEU.substring(8,22);
+			String parity 	 = jsonNEU.substring(23,29);
 
 			return new ADSBSentence(timestamp, dfca, icao, payload, parity);
 		}

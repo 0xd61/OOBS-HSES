@@ -72,12 +72,11 @@ public class ADSBSentence implements ADSBSentenceInterface
 		String[] times = this.getTimestamp().split("\\."); 
 		
 		//TODO: Define date format
-		//SimpleDateFormat dateFormat =...;
+		SimpleDateFormat dateFormat = new SimpleDateFormat();
 		//TODO: Create a DAte object
-		//Date date = ...;
+		Date date = new Date(Integer.parseInt(times[0])*1000);
 		//Create time string
-		//String time = dateFormat.format(date) + "." + times[1];
-		String time = "leck mich";
+		String time = dateFormat.format(date) + "." + times[1];
 
 		return "Time:\t\t " + time + "\n" +
 				"Dfca:\t\t " + this.getDfca() + "\n" +

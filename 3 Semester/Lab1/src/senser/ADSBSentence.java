@@ -4,23 +4,75 @@ import java.util.Date;
 
 public class ADSBSentence implements ADSBSentenceInterface
 {
-	//TODO: Create relevant fields
+	String timestamp;
+	String dfca;
+	String icao;
+	String payload;
+	String parity;
 
 	public ADSBSentence(String timestamp, String dfca, String icao, String payload, String parity)
 	{
-		//TODO: Fill relevant fields
+		This.timestamp = timestamp;
+		This.dfca = dfca;
+		This.icao = icao;
+		This.payload = payload;
+		This.parity = parity;
 	}
 
-	//TODO: Create relevant getter and setter methods
-	
+	@Override
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	@Override
+	public String getDfca() {
+		return dfca;
+	}
+
+	@Override
+	public String getIcao() {
+		return icao;
+	}
+
+	@Override
+	public String getPayload() {
+		return payload;
+	}
+
+	@Override
+	public String getParity() {
+		return parity;
+	}
+
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public void setDfca(String dfca) {
+		this.dfca = dfca;
+	}
+
+	public void setIcao(String icao) {
+		this.icao = icao;
+	}
+
+	public void setPayload(String payload) {
+		this.payload = payload;
+	}
+
+	public void setParity(String parity) {
+		this.parity = parity;
+	}
+
 	//TODO: Overwrite toString() method to print our relevant fields
+	@Override
 	public String toString()
 	{
 		//1379574427.9127481			
 		String[] times = this.getTimestamp().split("\\."); 
 		
 		//TODO: Define date format
-		SimpleDateFormat dateFormat = ...;
+		SimpleDateFormat dateFormat =...;
 		//TODO: Create a DAte object
 		Date date = ...;
 		//Create time string

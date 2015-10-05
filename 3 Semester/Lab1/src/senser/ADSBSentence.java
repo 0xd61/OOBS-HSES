@@ -12,11 +12,11 @@ public class ADSBSentence implements ADSBSentenceInterface
 
 	public ADSBSentence(String timestamp, String dfca, String icao, String payload, String parity)
 	{
-		This.timestamp = timestamp;
-		This.dfca = dfca;
-		This.icao = icao;
-		This.payload = payload;
-		This.parity = parity;
+		this.timestamp = timestamp;
+		this.dfca = dfca;
+		this.icao = icao;
+		this.payload = payload;
+		this.parity = parity;
 	}
 
 	@Override
@@ -72,12 +72,13 @@ public class ADSBSentence implements ADSBSentenceInterface
 		String[] times = this.getTimestamp().split("\\."); 
 		
 		//TODO: Define date format
-		SimpleDateFormat dateFormat =...;
+		//SimpleDateFormat dateFormat =...;
 		//TODO: Create a DAte object
-		Date date = ...;
+		//Date date = ...;
 		//Create time string
-		String time = dateFormat.format(date) + "." + times[1];
-		
+		//String time = dateFormat.format(date) + "." + times[1];
+		String time = "leck mich";
+
 		return "Time:\t\t " + time + "\n" +
 				"Dfca:\t\t " + this.getDfca() + "\n" +
 				"Originator:\t " + this.getIcao() + "\n" +

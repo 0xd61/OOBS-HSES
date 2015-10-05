@@ -1,4 +1,6 @@
 package senser;
+import com.sun.corba.se.impl.logging.OMGSystemException;
+
 import java.util.Observable;
 
 public class Senser extends Observable implements Runnable
@@ -13,9 +15,9 @@ public class Senser extends Observable implements Runnable
 	private String getSentence()
 	{
 		//DONE: Define an regular expression to read in only relevant sentences
-		String filter = "[0-9]{10}+\\.[0-9]{7}+!ADS-B\\*[A-Z0-9]+;";
+		String filter = "\\d+\\.\\d+!ADS-B\\*[A-Z0-9]+";
 		// to find . or * you must use \\. or \\*;
-
+		//System.out.println(client.readChunk(filter));
 		return client.readChunk(filter);
 	}
 	

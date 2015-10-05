@@ -12,8 +12,8 @@ public class Senser extends Observable implements Runnable
 
 	private String getSentence()
 	{
-		//TODO: Define an regular expression to read in only relevant sentences 
-		String filter = "";
+		//DONE: Define an regular expression to read in only relevant sentences
+		String filter = "[0-9]{10}+\\.[0-9]{7}+!ADS-B\\*[A-Z0-9]+;";
 		// to find . or * you must use \\. or \\*;
 
 		return client.readChunk(filter);
@@ -23,9 +23,9 @@ public class Senser extends Observable implements Runnable
 	{
 		ADSBSentence sentence;
 		
-		//TODO: Create factory and display object 
-		ADSBSentenceFactory factory = ...;
-		ADSBSentenceDisplay display = ...;
+		//DONE: Create factory and display object
+		ADSBSentenceFactory factory = new ADSBSentenceFactory();
+		ADSBSentenceDisplay display =new ADSBSentenceDisplay();
 		
 		while (true)
 		{

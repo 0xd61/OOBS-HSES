@@ -64,17 +64,18 @@ public class ADSBSentence implements ADSBSentenceInterface
 		this.parity = parity;
 	}
 
-	//TODO: Overwrite toString() method to print our relevant fields
+	//DONE: Overwrite toString() method to print our relevant fields
 	@Override
 	public String toString()
 	{
 		//1379574427.9127481			
 		String[] times = this.getTimestamp().split("\\."); 
 		
-		//TODO: Define date format
-		SimpleDateFormat dateFormat = new SimpleDateFormat();
-		//TODO: Create a DAte object
-		Date date = new Date(Integer.parseInt(times[0])*1000);
+		//DONE: Define date format
+		SimpleDateFormat dateFormat = new SimpleDateFormat("EEEEEEEEEEEEEEEEEEEEEEEEE, dd.MM.yyy, HH:mm:ss");
+		//DONE: Create a DAte object
+		//TODO: Timeerror
+		Date date = new Date(Long.parseLong(times[0])*1000- 840000);
 		//Create time string
 		String time = dateFormat.format(date) + "." + times[1];
 

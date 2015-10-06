@@ -14,15 +14,16 @@ public class ADSBSentenceFactory implements ADSBSentenceFactoryInterface
 		if ( Pattern.matches ( patAdsbJson, json ) ) 
 		{					
 			//DONE: Get distinct values from the json string
-			String timestamp = json.split("\\d+\\.\\d+")[0];
-			String dfca 	 = json.split("\\*\\w{2}")[0].replace("*","");
+			String timestamp = json.split("!")[0];
 
-			//TODO: Parsen
 			String jsonNEU = json.split("\\*")[1];
 
-			String icao 	 = jsonNEU.substring(1,7);
+			//TODO: Parsen
+
+			String dfca 	 = jsonNEU.substring(0,2);
+			String icao 	 = jsonNEU.substring(2,8);
 			String payload 	 = jsonNEU.substring(8,22);
-			String parity 	 = jsonNEU.substring(23,29);
+			String parity 	 = jsonNEU.substring(22,28);
 
 			return new ADSBSentence(timestamp, dfca, icao, payload, parity);
 		}

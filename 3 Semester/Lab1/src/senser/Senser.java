@@ -19,7 +19,7 @@ public class Senser extends Observable implements Runnable
 		//TODO: Loesung fuer Regex finden
 		String filter = "\\d+\\.\\d+!ADS-B\\*[0-9A-Z]{28}";
 		// to find . or * you must use \\. or \\*;
-		//System.out.println(client.readChunk(filter));
+		///System.out.println(client.readChunk(filter));
 		return client.readChunk(filter);
 	}
 	

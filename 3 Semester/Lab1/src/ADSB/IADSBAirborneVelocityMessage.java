@@ -5,14 +5,14 @@ package ADSB;
  */
 public interface IADSBAirborneVelocityMessage
 {
-    public abstract int getSubtype();
-    public abstract int getIntentChange();
-    public abstract int getReservedA();
-    public abstract int getNavigationAccuracy();
-    public abstract int getSpeed();
-    public abstract int getHeading();
-    public abstract int getVerticalRateSource();
-    public abstract int getVerticalSpeed();
+    public int getSubtype();
+    public int getIntentChange();
+    public int getReservedA();
+    public int getNavigationAccuracy();
+    public int getSpeed();
+    public int getHeading();
+    public int getVerticalRateSource();
+    public int getVerticalSpeed();
 
 
 }

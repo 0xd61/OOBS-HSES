@@ -5,6 +5,6 @@ package ADSB;
  */
 public interface IADSBAircraftIdentificationMessage
 {
-    public abstract int getEmitterCategory();
-    public abstract String getAircraftId();
+    public int getEmitterCategory();
+    public String getAircraftId();
 }

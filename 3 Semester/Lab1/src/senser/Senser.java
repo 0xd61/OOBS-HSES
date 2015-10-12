@@ -38,7 +38,8 @@ public class Senser extends Observable implements Runnable
 			if (sentence != null)
 			{
 				//Display the sentence
-				display.display(sentence);
+				//TODO: Einkommentieren für 2. Ausgabe.
+				//display.display(sentence);
 				
 				//Notify all observers
 				setChanged();

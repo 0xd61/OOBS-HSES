@@ -75,7 +75,7 @@ public class ADSBSentence implements ADSBSentenceInterface
 		SimpleDateFormat dateFormat = new SimpleDateFormat("EEEEEEEEEEEEEEEEEEEEEEEEE, dd.MM.yyy, HH:mm:ss");
 		//DONE: Create a DAte object
 		//TODO: Timeerror
-		Date date = new Date(Long.parseLong(times[0])*1000- 840000);
+		Date date = new Date(Long.parseLong(times[0])*1000);
 		//Create time string
 		String time = dateFormat.format(date) + "." + times[1];
 

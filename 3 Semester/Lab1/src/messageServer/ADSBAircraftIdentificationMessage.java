@@ -5,7 +5,7 @@ import messageServer.Interfaces.ADSBAircraftIdentificationMessageInterface;
 /**
  * Created by danie on 10/19/2015.
  */
-public class ADSBAircraftIdentificationMessage implements ADSBAircraftIdentificationMessageInterface
+public class ADSBAircraftIdentificationMessage extends ADSBMessage implements ADSBAircraftIdentificationMessageInterface
 {
     private int emitterCategory;
     private String aircraftId;

@@ -5,7 +5,7 @@ import messageServer.Interfaces.ADSBAirborneVelocityMessageInterface;
 /**
  * Created by danie on 10/19/2015.
  */
-public class ADSBAirborneVelocityMessage implements ADSBAirborneVelocityMessageInterface
+public class ADSBAirborneVelocityMessage extends ADSBMessage implements ADSBAirborneVelocityMessageInterface
 {
     private int subtype;
     private int intentChange;

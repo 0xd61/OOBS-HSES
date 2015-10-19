@@ -17,15 +17,21 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
         String substringMessageType = payloadInBin.substring(0,4);
         int messageType = Integer.parseInt(substringMessageType);
 
-        switch (messageType)
-        {
-            case 0:
-                //POSITION MESSAGE.
-                break;
 
-            
+        if(messageType >= 1 && messageType <= 4)
+        {
+            //Aircraft Identification
         }
 
+        if(messageType >= 9 && messageType <= 18)
+        {
+            //Aircraft Position
+        }
+
+        if(messageType == 19)
+        {
+            //Aircraft Velocity
+        }
 
         return null;
     }

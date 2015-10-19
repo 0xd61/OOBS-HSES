@@ -3,7 +3,7 @@ package messageServer.Interfaces;
 /**
  * Created by Johannes on 08.10.2015.
  */
-public interface ADSBAirbornePositionMessageInterface
+public interface ADSBAirbornePositionMessageInterface extends ADSBMessageInterface
 {
     public int getSurveillanceStatus();
     public int getNicSupplement();

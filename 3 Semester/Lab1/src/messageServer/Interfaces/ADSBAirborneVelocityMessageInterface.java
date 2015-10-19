@@ -3,7 +3,7 @@ package messageServer.Interfaces;
 /**
  * Created by Johannes on 08.10.2015.
  */
-public interface ADSBAirborneVelocityMessageInterface
+public interface ADSBAirborneVelocityMessageInterface extends ADSBMessageInterface
 {
     public int getSubtype();
     public int getIntentChange();

@@ -13,8 +13,7 @@ public class ADSBMessage implements ADSBMessageInterface
     private  int df;
     private String payload;
 
-    @Override
-    public void constructor(String icao, int type,int df, int ca, String payload)
+    public ADSBMessage (String icao, int type,int df, int ca, String payload)
     {
         this.icao = icao;
         this.type = type;

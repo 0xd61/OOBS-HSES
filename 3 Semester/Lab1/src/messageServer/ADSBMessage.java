@@ -13,6 +13,11 @@ public class ADSBMessage implements ADSBMessageInterface
     private  int df;
     private String payload;
 
+    public ADSBMessage()
+    {
+
+    }
+
     public ADSBMessage (String icao, int type,int df, int ca, String payload)
     {
         this.icao = icao;

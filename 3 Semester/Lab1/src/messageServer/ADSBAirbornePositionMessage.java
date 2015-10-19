@@ -5,7 +5,7 @@ import messageServer.Interfaces.ADSBAirbornePositionMessageInterface;
 /**
  * Created by Johannes on 19.10.2015.
  */
-public class ADSBAirbornePositionMessage implements ADSBAirbornePositionMessageInterface
+public class ADSBAirbornePositionMessage extends ADSBMessage implements ADSBAirbornePositionMessageInterface
 {
     private int surveillance;
     private int nicSupplement;

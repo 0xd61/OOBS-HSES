@@ -1,6 +1,6 @@
-package ADSB.Interfaces;
+package messageServer.Interfaces;
 
-import ADSB.ADSBMessage;
+import messageServer.ADSBMessage;
 import senser.ADSBSentence;
 
 /**

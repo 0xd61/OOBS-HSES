@@ -1,6 +1,6 @@
-package ADSB;
+package messageServer;
 
-import ADSB.Interfaces.ADSBAirbornePositionMessageInterface;
+import messageServer.Interfaces.ADSBAirbornePositionMessageInterface;
 
 /**
  * Created by Johannes on 19.10.2015.

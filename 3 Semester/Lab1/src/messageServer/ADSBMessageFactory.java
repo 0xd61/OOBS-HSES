@@ -1,9 +1,7 @@
-package ADSB;
+package messageServer;
 
-import ADSB.Interfaces.ADSBMessageInterface;
-import ADSB.Interfaces.ADSBMessageFactoryInterface;
+import messageServer.Interfaces.ADSBMessageFactoryInterface;
 import senser.ADSBSentence;
-import senser.ADSBSentenceInterface;
 
 /**
  * Created by Johannes on 12.10.2015.

@@ -1,6 +1,6 @@
-package ADSB;
+package messageServer;
 
-import ADSB.Interfaces.ADSBAirborneVelocityMessageInterface;
+import messageServer.Interfaces.ADSBAirborneVelocityMessageInterface;
 
 /**
  * Created by danie on 10/19/2015.

@@ -1,6 +1,6 @@
-package ADSB;
+package messageServer;
 
-import ADSB.Interfaces.ADSBMessageInterface;
+import messageServer.Interfaces.ADSBMessageInterface;
 
 /**
  * Created by Johannes on 12.10.2015.

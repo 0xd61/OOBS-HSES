@@ -15,9 +15,7 @@ public class Senser extends Observable implements Runnable
 	private String getSentence()
 	{
 		//DONE: Define an regular expression to read in only relevant sentences
-		//String filter = "\\d+\\.\\d+!ADS-B\\*[A-Z0-9]+";
-		//TODO: Loesung fuer Regex finden
-		String filter = "\\d+\\.\\d+!ADS-B\\*[0-9A-Z]{28}";
+		String filter = "\\d+\\.\\d+!ADS-B\\*[0-9A-F]{28}";
 		// to find . or * you must use \\. or \\*;
 		///System.out.println(client.readChunk(filter));
 		return client.readChunk(filter);

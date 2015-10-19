@@ -15,6 +15,16 @@ public class ADSBAirbornePositionMessage implements ADSBAirbornePositionMessageI
     private int cprLongitude;
     private int cprLatitude;
 
+    public ADSBAirbornePositionMessage(int surveillance, int nicSupplement, int altitude, int timeFlag, int cprFormat, int cprLongitude, int cprLatitude)
+    {
+        this.surveillance = surveillance;
+        this.nicSupplement = nicSupplement;
+        this.altitude = altitude;
+        this.timeFlag = timeFlag;
+        this.cprFormat = cprFormat;
+        this.cprLongitude = cprLongitude;
+        this.cprLatitude = cprLatitude;
+    }
 
     @Override
     public int getSurveillanceStatus()

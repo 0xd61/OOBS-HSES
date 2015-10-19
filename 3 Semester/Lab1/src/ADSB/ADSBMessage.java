@@ -1,11 +1,11 @@
 package ADSB;
 
-import ADSB.Interfaces.IADSBMessage;
+import ADSB.Interfaces.ADSBMessageInterface;
 
 /**
  * Created by Johannes on 12.10.2015.
  */
-public class ADSBMessage implements IADSBMessage
+public class ADSBMessage implements ADSBMessageInterface
 {
     private String icao;
     private int type;

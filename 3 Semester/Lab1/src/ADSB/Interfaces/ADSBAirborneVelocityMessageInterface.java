@@ -3,7 +3,7 @@ package ADSB.Interfaces;
 /**
  * Created by Johannes on 08.10.2015.
  */
-public interface IADSBAirborneVelocityMessage
+public interface ADSBAirborneVelocityMessageInterface
 {
     public int getSubtype();
     public int getIntentChange();

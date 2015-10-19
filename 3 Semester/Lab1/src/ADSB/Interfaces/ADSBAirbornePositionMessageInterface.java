@@ -3,7 +3,7 @@ package ADSB.Interfaces;
 /**
  * Created by Johannes on 08.10.2015.
  */
-public interface IADSBAirbornePositionMessage
+public interface ADSBAirbornePositionMessageInterface
 {
     public int getSurveillanceStatus();
     public int getNicSupplement();

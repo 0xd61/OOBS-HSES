@@ -1,13 +1,13 @@
 package ADSB;
 
-import ADSB.Interfaces.IADSBMessage;
-import ADSB.Interfaces.IADSBMessageServer;
-import ADSB.Interfaces.IADSBMessageServerObserver;
+import ADSB.Interfaces.ADSBMessageInterface;
+import ADSB.Interfaces.ADSBMessageServerInterface;
+import ADSB.Interfaces.ADSBMessageServerObserverInterface;
 
 /**
  * Created by Johannes on 12.10.2015.
  */
-public class ADSBMessageServer implements IADSBMessageServer
+public class ADSBMessageServer implements ADSBMessageServerInterface
 {
     @Override
     public void Constructor(String uri)
@@ -16,7 +16,7 @@ public class ADSBMessageServer implements IADSBMessageServer
     }
 
     @Override
-    public IADSBMessageServerObserver getObserver()
+    public ADSBMessageServerObserverInterface getObserver()
     {
         return null;
     }
@@ -28,7 +28,7 @@ public class ADSBMessageServer implements IADSBMessageServer
     }
 
     @Override
-    public IADSBMessage getMessage()
+    public ADSBMessageInterface getMessage()
     {
         return null;
     }

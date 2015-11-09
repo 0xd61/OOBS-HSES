@@ -80,14 +80,16 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             int emitterCategory = Integer.parseInt(payloadInBin.substring(5,8));
             String aircraftId = payloadInBin.substring(8,56);
 
-            aircraftId = Character.toString(ascii[Integer.parseInt(aircraftId.substring(0,6))]) +
-                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(6,12))]) +
-                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(12,18))]) +
-                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(18,24))]) +
-                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(24,30))]) +
-                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(30,36))]) +
-                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(36,42))]) +
-                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(42,48))]);
+
+            aircraftId = Character.toString(ascii[Integer.parseInt(aircraftId.substring(0,6),2)]) +
+                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(6,12),2)]) +
+                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(12,18),2)]) +
+                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(18,24),2)]) +
+                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(24,30),2)]) +
+                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(30,36),2)]) +
+                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(36,42),2)]) +
+                         Character.toString(ascii[Integer.parseInt(aircraftId.substring(42,48),2)]);
+
 
             ADSBMessage message = new ADSBAircraftIdentificationMessage(emitterCategory,aircraftId);
         }

@@ -17,6 +17,11 @@ public class ADSBMessageObserverTest implements Observer
         if(message == null)
             return;
 
-        System.out.println(message.getType());
+        if(arg instanceof ADSBAirbornePositionMessage)
+        {
+            ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(arg);
+            System.out.println(msg.getAltitude() * 0.3048);
+        }
+
     }
 }

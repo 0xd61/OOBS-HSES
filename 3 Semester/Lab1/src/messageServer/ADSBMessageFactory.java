@@ -12,14 +12,36 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
     @Override
     public ADSBMessage fromADSBSentence(ADSBSentence adsbSentence)
     {
-        String payloadInBin = HexBin.decode(adsbSentence.getPayload()).toString();
+        byte[] payloadByteArray = HexBin.decode(adsbSentence.getPayload());
+
+        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder binData;
+
+        for(int i = 0;i<payloadByteArray.length;i++)
+        {
+            binData = new StringBuilder();
+            binData.append(Integer.toString(payloadByteArray[i] & 0xFF, 2));
+            if(binData.toString().length() < 8)
+            {
+                int nullen = 8 - binData.toString().length();
+                for(int j = 0;j<nullen;j++)
+                {
+                    binData.insert(0,'0');
+                }
+            }
+
+            stringBuilder.append(binData.toString());
+        }
+
+        String payloadInBin = stringBuilder.toString();
+        int binSize = payloadInBin.length();
 
         String substringTypeCode = payloadInBin.substring(0,4);
         String substringSubtypeCode = payloadInBin.substring(5,7);
         String substringMessageType = payloadInBin.substring(8,55);
 
-        int TypeCode = Integer.parseInt(substringTypeCode);
-        int SubtypeCode = Integer.parseInt(substringSubtypeCode);
+        int TypeCode = Integer.parseInt(substringTypeCode,2);
+        int SubtypeCode = Integer.parseInt(substringSubtypeCode,2);
 
         //Airborne Position Message
         if(TypeCode == 0 || (TypeCode >= 9 && TypeCode <= 18)|| (TypeCode >= 20 && TypeCode <= 22))
@@ -32,8 +54,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             String strAltitude2 = payloadInBin.substring(16,19);
             int altitude = Integer.parseInt(strAltitude + strAltitude2);
 
-            int timeFlag = Integer.parseInt(payloadInBin.substring(20, 20));
-            int CPRFormat = Integer.parseInt(payloadInBin.substring(21, 21));
+            int timeFlag = Integer.parseInt(payloadInBin.substring(20, 20),2);
+            int CPRFormat = Integer.parseInt(payloadInBin.substring(21, 21),2);
             int CPREncodedLat = Integer.parseInt(payloadInBin.substring(22, 38));
             int CPRLongitude = Integer.parseInt(payloadInBin.substring(39, 55));
 

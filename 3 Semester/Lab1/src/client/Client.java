@@ -27,7 +27,7 @@ public class Client extends Thread implements Observer
 		ADSBSentenceDisplay display = new ADSBSentenceDisplay();
 		while(true)
 		{
-			display.display(queue.poll());
+			//display.display(queue.poll());
 		}
 	}
 }

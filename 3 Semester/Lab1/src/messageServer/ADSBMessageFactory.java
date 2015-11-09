@@ -102,11 +102,23 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             int reservedA = Integer.parseInt(payloadInBin.substring(9, 19));
             int navigationAccuracy = Integer.parseInt(payloadInBin.substring(10,13));
 
+            if (subtype == 1 || subtype == 2)
+            {
+                int eastWestDirection;
+                int eastWestVerlocity;
+                int northSouthDirection;
+                int northSouthVelocity;
 
-            int speed=0;
-            int heading=0;
-            int verticalRateSource=0;
-            int verticalSpeed=0;
+            }
+            if (subtype == 3 || subtype == 4)
+            {
+
+            }
+            int heading = 0;
+            int speed = 0;
+
+            int verticalRateSource= Integer.parseInt(payloadInBin.substring(35,36),2);
+            int verticalSpeed = 0;
 
             ADSBMessage message = new ADSBAirborneVelocityMessage(subtype,intentChange,reservedA,navigationAccuracy,speed,heading,verticalRateSource,verticalSpeed);
             return message;

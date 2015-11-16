@@ -17,17 +17,6 @@ public class ADSBMessageServer extends ADSBMessageServerInterface
     private ADSBMessageFactoryInterface messageFactory = new ADSBMessageFactory();
 
     @Override
-    public void Constructor(String uri)
-    {
-    }
-
-    @Override
-    public ADSBMessageServerObserverInterface getObserver()
-    {
-        return (ADSBMessageServerObserverInterface)this;
-    }
-
-    @Override
     public void update(Observable o, Object arg)
     {
         ADSBSentence sentence = ADSBSentence.class.cast(arg);

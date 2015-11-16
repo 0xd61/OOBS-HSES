@@ -8,14 +8,5 @@ import java.util.Observer;
  */
 public abstract class ADSBMessageServerInterface extends Observable implements Observer
 {
-    public void Constructor(String uri)
-    {
-
-    }
-
-    public ADSBMessageServerObserverInterface getObserver()
-    {
-        return(null);
-    }
 
 }

@@ -19,7 +19,6 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
 
         //Payload in Binär umwandeln
         String payloadInBin = new BigInteger(adsbSentence.getPayload(),16).toString(2);
-
         String substringTypeCode = payloadInBin.substring(0,5);
         String substringSubtypeCode = payloadInBin.substring(5,8);
 

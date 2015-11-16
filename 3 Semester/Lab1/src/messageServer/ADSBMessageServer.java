@@ -21,6 +21,7 @@ public class ADSBMessageServer extends ADSBMessageServerInterface
     {
     }
 
+    //Hoffentlich stimmt noch alles, nach dem Failed Merge :P
     @Override
     public ADSBMessageServerObserverInterface getObserver()
     {

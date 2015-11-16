@@ -103,8 +103,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             int intentChange = Integer.parseInt(payloadInBin.substring(8,9),2);
             int reservedA = Integer.parseInt(payloadInBin.substring(9, 19),2);
             int navigationAccuracy = Integer.parseInt(payloadInBin.substring(10,13),2);
-            double speed;
-            double heading;
+            double speed = 0;
+            double heading = 0;
 
             if (subtype == 1 || subtype == 2)
             {
@@ -140,7 +140,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
                 if (headingStatus == 0)
                     heading = 0;
                 else
-                    heading = 
+                    heading = 0;
             }
 
             int verticalRateSource= Integer.parseInt(payloadInBin.substring(35,36),2);

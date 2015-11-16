@@ -134,13 +134,19 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             }
             if (subtype == 3 || subtype == 4)
             {
-                
+                int headingStatus = Integer.parseInt(payloadInBin.substring(13,14),2);
+                int speedType = Integer.parseInt(payloadInBin.substring(24,25),2);
+
+                if (headingStatus == 0)
+                    heading = 0;
+                else
+                    heading = 
             }
 
             int verticalRateSource= Integer.parseInt(payloadInBin.substring(35,36),2);
             int verticalSpeed = 0;
 
-            ADSBMessage message = new ADSBAirborneVelocityMessage(subtype,intentChange,reservedA,navigationAccuracy,(int)speed,heading,verticalRateSource,verticalSpeed);
+            ADSBMessage message = new ADSBAirborneVelocityMessage(subtype,intentChange,reservedA,navigationAccuracy,(int)speed,(int)heading,verticalRateSource,verticalSpeed);
             return message;
         }
 

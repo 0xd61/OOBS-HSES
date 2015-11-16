@@ -19,6 +19,10 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
 
         //Payload in Binär umwandeln
         String payloadInBin = new BigInteger(adsbSentence.getPayload(),16).toString(2);
+        while (payloadInBin.length()!= 56)
+            payloadInBin = 0 + payloadInBin;
+        //int test = payloadInBin.length();
+
         String substringTypeCode = payloadInBin.substring(0,5);
         String substringSubtypeCode = payloadInBin.substring(5,8);
 
@@ -41,7 +45,9 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             int CPREncodedLat = Integer.parseInt(payloadInBin.substring(22, 39),2);
             int CPRLongitude = Integer.parseInt(payloadInBin.substring(39, 56),2);
 
-            
+            //TODO: Longitude und Latitude Berechnung
+            //Kann nicht gerechnet werden, da zwei Messages benötigt werden
+
 
             //QBit und Altitude Berechnung
             int qBit = Integer.parseInt(payloadInBin.substring(15, 16),2);

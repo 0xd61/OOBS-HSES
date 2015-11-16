@@ -12,6 +12,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
     @Override
     public ADSBMessage fromADSBSentence(ADSBSentence adsbSentence)
     {
+        //Payload in Binär umwandeln
         byte[] payloadByteArray = HexBin.decode(adsbSentence.getPayload());
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -34,11 +35,11 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
         }
 
         String payloadInBin = stringBuilder.toString();
-        int binSize = payloadInBin.length();
+        //int binSize = payloadInBin.length(); //Nur für Debug
 
         String substringTypeCode = payloadInBin.substring(0,5);
         String substringSubtypeCode = payloadInBin.substring(5,8);
-        String substringMessageType = payloadInBin.substring(8,56);
+        //String substringMessageType = payloadInBin.substring(8,56); NICHT BENÖTIGT
 
         int TypeCode = Integer.parseInt(substringTypeCode,2);
         int SubtypeCode = Integer.parseInt(substringSubtypeCode,2);
@@ -78,9 +79,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
                             '[','\\',']','^','_',' ','!','"','#','$','%','&','\'','(',')','*','+',',','-','.','/',
                             '0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?'};
             int emitterCategory = Integer.parseInt(payloadInBin.substring(5,8));
+
             String aircraftId = payloadInBin.substring(8,56);
-
-
             aircraftId = Character.toString(ascii[Integer.parseInt(aircraftId.substring(0,6),2)]) +
                          Character.toString(ascii[Integer.parseInt(aircraftId.substring(6,12),2)]) +
                          Character.toString(ascii[Integer.parseInt(aircraftId.substring(12,18),2)]) +
@@ -90,8 +90,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
                          Character.toString(ascii[Integer.parseInt(aircraftId.substring(36,42),2)]) +
                          Character.toString(ascii[Integer.parseInt(aircraftId.substring(42,48),2)]);
 
-
             ADSBMessage message = new ADSBAircraftIdentificationMessage(emitterCategory,aircraftId);
+            return message;
         }
 
         //Aircraft Velocity Message

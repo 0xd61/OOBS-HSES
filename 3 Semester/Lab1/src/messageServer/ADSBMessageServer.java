@@ -24,7 +24,7 @@ public class ADSBMessageServer extends ADSBMessageServerInterface
     @Override
     public ADSBMessageServerObserverInterface getObserver()
     {
-        return (ADSBMessageServerObserverInterface)this;
+        return ADSBMessageServerObserverInterface.class.cast(this);
     }
 
     @Override

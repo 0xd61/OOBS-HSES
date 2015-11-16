@@ -13,4 +13,8 @@ public interface ADSBMessageInterface
     public String getIcao();
     public int getDownlinkFormat();
     public int getCapability();
+
+    public void setICAO(String icao);
+    public void setType(int type);
+
 }

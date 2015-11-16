@@ -56,4 +56,16 @@ public class ADSBMessage implements ADSBMessageInterface
     {
         return ca;
     }
+
+    @Override
+    public void setICAO(String icao)
+    {
+        this.icao = icao;
+    }
+
+    @Override
+    public void setType(int type)
+    {
+        this.type = type;
+    }
 }

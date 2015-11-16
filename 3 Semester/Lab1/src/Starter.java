@@ -1,10 +1,7 @@
 import client.Client;
-import messageServer.ADSBMessageObserverTest;
+import messageServer.ADSBMessageDisplay;
 import messageServer.ADSBMessageServer;
-import messageServer.Interfaces.ADSBMessageServerInterface;
 import senser.Senser;
-
-import java.util.Observer;
 
 public class Starter
 {
@@ -13,11 +10,16 @@ public class Starter
 	{
 		String urlString = "http://flugmon-it.hs-esslingen.de/subscribe/ads.sentence";
 		Senser server = new Senser(urlString);
+
 		ADSBMessageServer messageServer = new ADSBMessageServer();
-		ADSBMessageObserverTest test = new ADSBMessageObserverTest();
-		messageServer.addObserver(test);
+
+		// Observer zum MessageServer hinzufügen.
+		ADSBMessageDisplay messageDisplay = new ADSBMessageDisplay();
+		messageServer.addObserver(messageDisplay);
 
 		Client client = new Client();
+
+		// Observer zum Senser hinzufügen.
 		server.addObserver(client);
 		server.addObserver(messageServer);
 

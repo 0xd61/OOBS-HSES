@@ -1,5 +1,6 @@
 package messageServer;
 
+import com.sun.deploy.security.ValidationState;
 import messageServer.Interfaces.ADSBMessageFactoryInterface;
 import senser.ADSBSentence;
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
@@ -69,6 +70,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
 
 
             ADSBMessage message = new ADSBAirbornePositionMessage(surveillance,nicSupplement,altitude,timeFlag,CPRFormat,CPRLongitude,CPREncodedLat);
+            message.setType(TypeCode);
+            message.setICAO(adsbSentence.getIcao());
             return message;
         }
 
@@ -91,6 +94,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
                          Character.toString(ascii[Integer.parseInt(aircraftId.substring(42,48),2)]);
 
             ADSBMessage message = new ADSBAircraftIdentificationMessage(emitterCategory,aircraftId);
+            message.setType(TypeCode);
+            message.setICAO(adsbSentence.getIcao());
             return message;
         }
 
@@ -121,6 +126,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             int verticalSpeed = 0;
 
             ADSBMessage message = new ADSBAirborneVelocityMessage(subtype,intentChange,reservedA,navigationAccuracy,speed,heading,verticalRateSource,verticalSpeed);
+            message.setType(TypeCode);
+            message.setICAO(adsbSentence.getIcao());
             return message;
         }
 

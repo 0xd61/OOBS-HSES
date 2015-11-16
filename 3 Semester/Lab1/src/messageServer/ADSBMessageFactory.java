@@ -4,6 +4,7 @@ import messageServer.Interfaces.ADSBMessageFactoryInterface;
 import senser.ADSBSentence;
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 
+
 /**
  * Created by Johannes on 12.10.2015.
  */
@@ -80,6 +81,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
                             '0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?'};
             int emitterCategory = Integer.parseInt(payloadInBin.substring(5,8));
 
+            //TODO: Optimierung mit Stringbuilder
             String aircraftId = payloadInBin.substring(8,56);
             aircraftId = Character.toString(ascii[Integer.parseInt(aircraftId.substring(0,6),2)]) +
                          Character.toString(ascii[Integer.parseInt(aircraftId.substring(6,12),2)]) +
@@ -97,30 +99,48 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
         //Aircraft Velocity Message
         if(TypeCode == 19 && (SubtypeCode >= 1 && SubtypeCode <=4))
         {
-            int subtype = Integer.parseInt(payloadInBin.substring(5,8));
-            int intentChange = Integer.parseInt(payloadInBin.substring(8,9));
-            int reservedA = Integer.parseInt(payloadInBin.substring(9, 19));
-            int navigationAccuracy = Integer.parseInt(payloadInBin.substring(10,13));
+            int subtype = Integer.parseInt(payloadInBin.substring(5,8),2);
+            int intentChange = Integer.parseInt(payloadInBin.substring(8,9),2);
+            int reservedA = Integer.parseInt(payloadInBin.substring(9, 19),2);
+            int navigationAccuracy = Integer.parseInt(payloadInBin.substring(10,13),2);
+            double speed;
+            double heading;
 
             if (subtype == 1 || subtype == 2)
             {
-                int eastWestDirection;
-                int eastWestVerlocity;
-                int northSouthDirection;
-                int northSouthVelocity;
+                int eastWestDirection = Integer.parseInt(payloadInBin.substring(13,14),2);
+                int eastWestVelocity = Integer.parseInt(payloadInBin.substring(14,24),2);
+                int northSouthDirection = Integer.parseInt(payloadInBin.substring(24,25),2);
+                int northSouthVelocity = Integer.parseInt(payloadInBin.substring(25,35),2);
 
+                int weVel;
+                int snVel;
+
+                if (eastWestDirection == 0)
+                    weVel = eastWestVelocity;
+                else
+                    weVel = -1 * eastWestVelocity;
+
+                if (northSouthDirection == 0)
+                    snVel = northSouthVelocity;
+                else
+                    snVel = -1 * northSouthVelocity;
+
+
+                speed = Math.sqrt((double)weVel * (double)weVel + (double)snVel * (double)snVel);
+                heading = Math.atan(((double)weVel/(double)snVel)*360.0/(2*Math.PI));
+                if (heading < 0)
+                    heading += 360;
             }
             if (subtype == 3 || subtype == 4)
             {
-
+                
             }
-            int heading = 0;
-            int speed = 0;
 
             int verticalRateSource= Integer.parseInt(payloadInBin.substring(35,36),2);
             int verticalSpeed = 0;
 
-            ADSBMessage message = new ADSBAirborneVelocityMessage(subtype,intentChange,reservedA,navigationAccuracy,speed,heading,verticalRateSource,verticalSpeed);
+            ADSBMessage message = new ADSBAirborneVelocityMessage(subtype,intentChange,reservedA,navigationAccuracy,(int)speed,heading,verticalRateSource,verticalSpeed);
             return message;
         }
 

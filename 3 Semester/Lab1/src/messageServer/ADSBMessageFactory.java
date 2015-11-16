@@ -25,7 +25,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
         int TypeCode = Integer.parseInt(substringTypeCode,2);
         int SubtypeCode = Integer.parseInt(substringSubtypeCode,2);
 
-        //Airborne Position Message
+        //Aircraft Position Message
         if(TypeCode == 0 || (TypeCode >= 9 && TypeCode <= 18)|| (TypeCode >= 20 && TypeCode <= 22))
         {
             //Messagetype parsen
@@ -40,6 +40,8 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             int CPRFormat = Integer.parseInt(payloadInBin.substring(21, 22),2);
             int CPREncodedLat = Integer.parseInt(payloadInBin.substring(22, 39),2);
             int CPRLongitude = Integer.parseInt(payloadInBin.substring(39, 56),2);
+
+            
 
             //QBit und Altitude Berechnung
             int qBit = Integer.parseInt(payloadInBin.substring(15, 16),2);
@@ -112,6 +114,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
                 if (heading < 0)
                     heading += 360;
             }
+            //Nicht wirklich benötigt
             if (subtype == 3 || subtype == 4)
             {
                 int headingStatus = Integer.parseInt(payloadInBin.substring(13,14),2);

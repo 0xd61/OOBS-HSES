@@ -1,4 +1,5 @@
 import client.Client;
+import messageServer.ADSBMessageDisplay;
 import messageServer.ADSBMessageObserverTest;
 import messageServer.ADSBMessageServer;
 import messageServer.Interfaces.ADSBMessageServerInterface;
@@ -14,7 +15,7 @@ public class Starter
 		String urlString = "http://flugmon-it.hs-esslingen.de/subscribe/ads.sentence";
 		Senser server = new Senser(urlString);
 		ADSBMessageServer messageServer = new ADSBMessageServer();
-		ADSBMessageObserverTest test = new ADSBMessageObserverTest();
+		ADSBMessageDisplay test = new ADSBMessageDisplay();
 		messageServer.addObserver(test);
 
 		Client client = new Client();

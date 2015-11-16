@@ -28,7 +28,7 @@ public class ADSBMessageDisplay extends ADSBMessageServerObserverInterface
             sBuilder.append(String.format("Alti: \t\t %f\r\n",msg.getAltitude() * 0.3048));
             sBuilder.append(String.format("Lat : Lon: \t %d : %d\r\n",msg.getCprLatitude(), msg.getCprLongitude()));
             sBuilder.append(String.format("Format: \t %d\r\n",msg.getCprFormat()));
-
+            //test
             System.out.println(sBuilder.toString());
             return;
         }

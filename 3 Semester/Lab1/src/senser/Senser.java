@@ -1,5 +1,8 @@
 package senser;
 import com.sun.corba.se.impl.logging.OMGSystemException;
+import messageServer.ADSBMessageServer;
+import messageServer.Interfaces.ADSBMessageServerInterface;
+import messageServer.Interfaces.ADSBMessageServerObserverInterface;
 
 import java.util.Observable;
 
@@ -38,12 +41,13 @@ public class Senser extends Observable implements Runnable
 			if (sentence != null)
 			{
 				//Display the sentence
-				display.display(sentence);
+				//TODO: Einkommentieren für 2. Ausgabe.
+				//display.display(sentence);
 				
 				//Notify all observers
 				setChanged();
 				notifyObservers(sentence);
-			}			
+			}
 		}		
 	}
 }

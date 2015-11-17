@@ -28,9 +28,10 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         if (icaoMap.containsKey(message.getIcao()))
         {
             myList = icaoMap.get(message.getIcao());
-            if (myList.size()==10)
+            if (myList.size()==11)
             {
                 ListIterator myiterator = myList.listIterator();
+                //Iterator auf erstes Element bewegen
                 myiterator.next();
                 myiterator.remove();
             }

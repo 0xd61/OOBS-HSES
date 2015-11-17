@@ -1,5 +1,6 @@
 import client.Client;
 import messageServer.ADSBMessageDisplay;
+import messageServer.ADSBMessageMap;
 import messageServer.ADSBMessageObserverTest;
 import messageServer.ADSBMessageServer;
 import messageServer.Interfaces.ADSBMessageServerInterface;
@@ -16,7 +17,9 @@ public class Starter
 		Senser server = new Senser(urlString);
 		ADSBMessageServer messageServer = new ADSBMessageServer();
 		ADSBMessageDisplay test = new ADSBMessageDisplay();
+		ADSBMessageMap map = new ADSBMessageMap();
 		messageServer.addObserver(test);
+		messageServer.addObserver(map);
 
 		Client client = new Client();
 		server.addObserver(client);

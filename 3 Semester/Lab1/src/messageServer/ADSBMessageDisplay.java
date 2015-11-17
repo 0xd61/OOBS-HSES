@@ -25,7 +25,7 @@ public class ADSBMessageDisplay extends ADSBMessageServerObserverInterface
             StringBuilder sBuilder = new StringBuilder();
             sBuilder.append(String.format("%s Airborne Position Message\r\n" , msg.getIcao()));
             sBuilder.append(String.format("Type: \t\t %d\r\n",msg.getType()));
-            sBuilder.append(String.format("Alti: \t\t %f\r\n",msg.getAltitude()));// * 0.3048)); Zur Umrechnung in Meter
+            sBuilder.append(String.format("Alti: \t\t %d\r\n",msg.getAltitude()));// * 0.3048)); Zur Umrechnung in Meter
             sBuilder.append(String.format("Lat : Lon: \t %d : %d\r\n",msg.getCprLatitude(), msg.getCprLongitude()));
             sBuilder.append(String.format("Format: \t %d\r\n",msg.getCprFormat()));
             //test

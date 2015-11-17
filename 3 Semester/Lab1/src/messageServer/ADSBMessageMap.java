@@ -20,6 +20,9 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
     public void update(Observable o, Object arg)
     {
         ADSBMessage message = ADSBMessage.class.cast(arg);
+        if(message == null)
+            return;
+
         List <ADSBMessage> myList;
 
         if (icaoMap.containsKey(message.getIcao()))
@@ -28,6 +31,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
             if (myList.size()==10)
             {
                 ListIterator myiterator = myList.listIterator();
+                myiterator.next();
                 myiterator.remove();
             }
 

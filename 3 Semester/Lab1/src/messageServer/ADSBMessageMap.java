@@ -9,13 +9,17 @@ import java.util.*;
  */
 public class ADSBMessageMap extends ADSBMessageServerObserverInterface
 {
-    private HashMap <String, List<ADSBMessage>> icaoMap;
     public enum MsgType {positionMessage, identificationMessage, velocityMessage};
 
-    public ADSBMessageMap()
+    private HashMap <String, List<ADSBMessage>> icaoMap;
+    private static final ADSBMessageMap myMap = new ADSBMessageMap();
+
+
+    private ADSBMessageMap()
     {
         icaoMap = new HashMap <String, List<ADSBMessage>>();
     }
+    public static ADSBMessageMap getInstance () {return myMap;}
 
     @Override
     public void update(Observable o, Object arg)

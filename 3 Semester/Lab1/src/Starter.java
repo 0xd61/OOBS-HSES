@@ -19,7 +19,7 @@ public class Starter
 		Senser server = new Senser(urlString);
 		ADSBMessageServer messageServer = new ADSBMessageServer();
 		ADSBMessageDisplay test = new ADSBMessageDisplay();
-		ADSBMessageMap map = new ADSBMessageMap();
+		ADSBMessageMap map = ADSBMessageMap.getInstance();
 		messageServer.addObserver(test);
 		messageServer.addObserver(map);
 

@@ -34,6 +34,15 @@ public class Starter
 		{
 			public void run()
 			{
+				try
+				{
+					UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
+				}
+				catch ( Exception e )
+				{
+					e.printStackTrace();
+				}
+
 				ADSBMainWindow app = new ADSBMainWindow();
 			}
 		});

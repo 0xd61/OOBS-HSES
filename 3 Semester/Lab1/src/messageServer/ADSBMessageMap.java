@@ -10,6 +10,7 @@ import java.util.*;
 public class ADSBMessageMap extends ADSBMessageServerObserverInterface
 {
     private HashMap <String, List<ADSBMessage>> icaoMap;
+    public enum MsgType {positionMessage, identificationMessage, velocityMessage};
 
     public ADSBMessageMap()
     {
@@ -44,5 +45,19 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
 
         myList.add(message);
         icaoMap.put(message.getIcao(),myList);
+    }
+
+    List<ADSBMessage> getMessagetype(String icao, MsgType type)
+    {
+        List<ADSBMessage> tmpList = icaoMap.get(icao);
+        List<ADSBMessage> filteredList = new ArrayList<ADSBMessage>();
+
+        for(ADSBMessage element : tmpList)
+        {
+            if (MsgType.class.cast(element.getMsgType()) == type);
+                filteredList.add(element);
+        }
+
+        return filteredList;
     }
 }

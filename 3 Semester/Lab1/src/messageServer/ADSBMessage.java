@@ -12,19 +12,11 @@ public class ADSBMessage implements ADSBMessageInterface
     private int ca;
     private  int df;
     private String payload;
+    private int msgType;
 
     public ADSBMessage()
     {
 
-    }
-
-    public ADSBMessage (String icao, int type,int df, int ca, String payload)
-    {
-        this.icao = icao;
-        this.type = type;
-        this.ca = ca;
-        this.payload = payload;
-        this.df = df;
     }
 
     @Override
@@ -58,6 +50,9 @@ public class ADSBMessage implements ADSBMessageInterface
     }
 
     @Override
+    public int getMsgType() {return msgType;}
+
+    @Override
     public void setType(int type)
     {
         this.type = type;
@@ -68,4 +63,9 @@ public class ADSBMessage implements ADSBMessageInterface
     {
         this.icao = icao;
     }
+
+    @Override
+    public void setMsgType(int msgType) {this.msgType = msgType;}
+
+
 }

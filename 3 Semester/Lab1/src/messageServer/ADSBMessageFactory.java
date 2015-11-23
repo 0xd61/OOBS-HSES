@@ -60,6 +60,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             ADSBMessage message = new ADSBAirbornePositionMessage(surveillance,nicSupplement,altitude,timeFlag,CPRFormat,CPRLongitude,CPREncodedLat);
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
+            message.setMsgType(0);
             return message;
         }
 
@@ -85,6 +86,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             ADSBMessage message = new ADSBAircraftIdentificationMessage(emitterCategory,aircraftId);
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
+            message.setMsgType(1);
             return message;
         }
 
@@ -142,6 +144,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             ADSBMessage message = new ADSBAirborneVelocityMessage(subtype,intentChange,reservedA,navigationAccuracy,(int)speed,(int)heading,verticalRateSource,verticalSpeed);
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
+            message.setMsgType(2);
             return message;
         }
 

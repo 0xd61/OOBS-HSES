@@ -1,3 +1,4 @@
+import GUI.ADSBMainWindow;
 import client.Client;
 import messageServer.ADSBMessageDisplay;
 import messageServer.ADSBMessageMap;
@@ -6,6 +7,7 @@ import messageServer.ADSBMessageServer;
 import messageServer.Interfaces.ADSBMessageServerInterface;
 import senser.Senser;
 
+import javax.swing.*;
 import java.util.Observer;
 
 public class Starter
@@ -27,5 +29,13 @@ public class Starter
 
 		client.start();
 		new Thread(server).start();
+
+		SwingUtilities.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				ADSBMainWindow app = new ADSBMainWindow();
+			}
+		});
 	}
 }

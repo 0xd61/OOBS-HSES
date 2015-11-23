@@ -64,4 +64,14 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
 
         return filteredList;
     }
+
+    List<String> getFlights()
+    {
+        List<String> keys = new ArrayList<String>();
+        for(String key : icaoMap.keySet())
+        {
+            keys.add(key);
+        }
+        return keys;
+    }
 }

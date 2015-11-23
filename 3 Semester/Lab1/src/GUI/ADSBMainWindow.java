@@ -11,9 +11,9 @@ import java.awt.event.ActionListener;
  */
 public class ADSBMainWindow extends  JFrame
 {
-    private JTree treeFlights;
-    private JButton buttonUpdate;
     private JPanel contentPanel;
+    private JTabbedPane tabbedPane1;
+
 
     public ADSBMainWindow()
     {
@@ -23,10 +23,11 @@ public class ADSBMainWindow extends  JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-        buttonUpdate.addActionListener(new ButtonUpdate_Clicked());
+       // buttonUpdate.addActionListener(new ButtonUpdate_Clicked());
 
     }
 
+    /*
     public class ButtonUpdate_Clicked implements  ActionListener
     {
         @Override
@@ -37,4 +38,7 @@ public class ADSBMainWindow extends  JFrame
             model.insertNodeInto(new DefaultMutableTreeNode("another_child"), root, root.getChildCount());
         }
     }
+    */
 }
+
+

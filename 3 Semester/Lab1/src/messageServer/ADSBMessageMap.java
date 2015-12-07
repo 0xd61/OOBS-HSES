@@ -2,6 +2,8 @@ package messageServer;
 
 import messageServer.Interfaces.ADSBMessageServerObserverInterface;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -13,6 +15,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
 
     private HashMap <String, List<ADSBMessage>> icaoMap;
     private static final ADSBMessageMap myMap = new ADSBMessageMap();
+    private int numberOfValues = 11; //Anzahl der maximalen Messages eines Flugzeuges in der Liste
 
 
     private ADSBMessageMap()
@@ -33,7 +36,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         if (icaoMap.containsKey(message.getIcao()))
         {
             myList = icaoMap.get(message.getIcao());
-            if (myList.size()==11)
+            if (myList.size()== numberOfValues)
             {
                 ListIterator myiterator = myList.listIterator();
                 //Iterator auf erstes Element bewegen
@@ -84,6 +87,30 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         for(String key : icaoMap.keySet())
         {
             keys.add(key);
+        }
+        return keys;
+    }
+
+    List<String> getAllActive()
+    {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date currDate= new Date();
+        Date flightDate = null;
+        List<String> keys = new ArrayList<String>();
+
+        for(String key : icaoMap.keySet())
+        {
+            try
+            {
+                flightDate = dateFormat.parse(icaoMap.get(key).get(numberOfValues - 1).getTimestamp());
+            }
+            catch (Exception e)
+            {
+                System.out.println("Parse Error!");
+            }
+            if ((currDate.getTime() - flightDate.getTime()) < 240 )
+                keys.add(key);
         }
         return keys;
     }

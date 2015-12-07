@@ -65,6 +65,18 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         return filteredList;
     }
 
+    public ADSBMessage getLastMessageOfType(String icao, MsgType type)
+    {
+        ADSBMessage message = null;
+        for(ADSBMessage element : tmpList)
+        {
+            if (MsgType.class.cast(element.getMsgType()) == type);
+             message = element;
+        }
+
+        return message;
+    }
+
     public List<String> getFlights()
     {
         List<String> keys = new ArrayList<String>();

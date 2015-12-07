@@ -91,7 +91,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         return keys;
     }
 
-    List<String> getAllActive()
+    public List<String> getAllActive()
     {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

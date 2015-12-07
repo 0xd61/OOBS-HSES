@@ -44,9 +44,19 @@ public class ADSBMainWindow extends  JFrame
             @Override
             public void valueChanged(ListSelectionEvent e)
             {
-                String icao = listActiveFlights.getSelectedValue().toString();
-                ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(icao, ADSBMessageMap.MsgType.positionMessage));
-                textField1.setText(new Integer(msg.getAltitude()).toString());
+                try
+                {
+                    String icao = listActiveFlights.getSelectedValue().toString();
+
+                    ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(icao, ADSBMessageMap.MsgType.positionMessage));
+
+
+                    textField1.setText(new Integer(msg.getAltitude()).toString());
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
         });
 

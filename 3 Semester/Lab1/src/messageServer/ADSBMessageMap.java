@@ -74,7 +74,9 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         ADSBMessage message = null;
         for(ADSBMessage element : tmpList)
         {
-            if (MsgType.class.cast(element.getMsgType()) == type);
+            MsgType msgType = MsgType.values()[element.getMsgType()];
+
+            if (msgType == type);
              message = element;
         }
 

@@ -51,7 +51,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         icaoMap.put(message.getIcao(),myList);
     }
 
-    List<ADSBMessage> getMessagetype(String icao, MsgType type)
+    public List<ADSBMessage> getMessagetype(String icao, MsgType type)
     {
         List<ADSBMessage> tmpList = icaoMap.get(icao);
         List<ADSBMessage> filteredList = new ArrayList<ADSBMessage>();
@@ -65,7 +65,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         return filteredList;
     }
 
-    List<String> getFlights()
+    public List<String> getFlights()
     {
         List<String> keys = new ArrayList<String>();
         for(String key : icaoMap.keySet())

@@ -1,5 +1,11 @@
 package GUI;
 
+import messageServer.ADSBMessageMap;
+
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -13,18 +19,43 @@ public class ADSBMainWindow extends  JFrame
 {
     private JPanel contentPanel;
     private JTabbedPane tabbedPane1;
-
+    private JList listActiveFlights;
+    private Timer timer;
 
     public ADSBMainWindow()
     {
+
         super("ADSB Main Window");
         setContentPane(contentPanel);
         setSize(800,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-       // buttonUpdate.addActionListener(new ButtonUpdate_Clicked());
+        InitTimer(2000);
 
+
+        // buttonUpdate.addActionListener(new ButtonUpdate_Clicked());
+
+    }
+
+    private void InitTimer(int updateTimeInMilliseconds)
+    {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask()
+        {
+            public void run()
+            {
+                listActiveFlights.removeAll();
+                List<String> flights = ADSBMessageMap.getInstance().getFlights();
+                DefaultListModel model = new DefaultListModel();
+
+                for(String s : flights)
+                    model.addElement(s);
+
+                listActiveFlights.setModel(model);
+            }
+        }
+                ,1000,updateTimeInMilliseconds);
     }
 
     /*

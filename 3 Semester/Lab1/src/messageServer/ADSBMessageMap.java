@@ -67,6 +67,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
 
     public ADSBMessage getLastMessageOfType(String icao, MsgType type)
     {
+        List<ADSBMessage> tmpList = icaoMap.get(icao);
         ADSBMessage message = null;
         for(ADSBMessage element : tmpList)
         {

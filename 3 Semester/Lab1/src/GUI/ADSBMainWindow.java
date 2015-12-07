@@ -1,5 +1,7 @@
 package GUI;
 
+import messageServer.ADSBAirbornePositionMessage;
+import messageServer.ADSBMessage;
 import messageServer.ADSBMessageMap;
 
 import java.util.List;
@@ -7,6 +9,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.event.ActionEvent;
@@ -20,6 +24,8 @@ public class ADSBMainWindow extends  JFrame
     private JPanel contentPanel;
     private JTabbedPane tabbedPane1;
     private JList listActiveFlights;
+    private JTextField textField1;
+
     private Timer timer;
 
     public ADSBMainWindow()
@@ -33,6 +39,16 @@ public class ADSBMainWindow extends  JFrame
 
         InitTimer(2000);
 
+        listActiveFlights.addListSelectionListener(new ListSelectionListener()
+        {
+            @Override
+            public void valueChanged(ListSelectionEvent e)
+            {
+                String icao = listActiveFlights.getSelectedValue().toString();
+                ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(icao, ADSBMessageMap.MsgType.positionMessage));
+                textField1.setText(new Integer(msg.getAltitude()).toString());
+            }
+        });
 
         // buttonUpdate.addActionListener(new ButtonUpdate_Clicked());
 

@@ -27,6 +27,9 @@ public class ADSBMainWindow extends  JFrame
     private JTextField textField1;
 
     private Timer timer;
+    private Timer flightInfoUpdateTimer;
+
+    private String currentICAO;
 
     public ADSBMainWindow()
     {
@@ -37,7 +40,8 @@ public class ADSBMainWindow extends  JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-        InitTimer(2000);
+        InitTimer(5000);
+        FlightInfoUpdateTimerTick(1000);
 
         listActiveFlights.addListSelectionListener(new ListSelectionListener()
         {
@@ -46,12 +50,9 @@ public class ADSBMainWindow extends  JFrame
             {
                 try
                 {
-                    String icao = listActiveFlights.getSelectedValue().toString();
-
-                    ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(icao, ADSBMessageMap.MsgType.positionMessage));
+                    currentICAO = listActiveFlights.getSelectedValue().toString();
 
 
-                    textField1.setText(new Integer(msg.getAltitude()).toString());
                 }
                 catch(Exception ex)
                 {
@@ -79,6 +80,28 @@ public class ADSBMainWindow extends  JFrame
                     model.addElement(s);
 
                 listActiveFlights.setModel(model);
+            }
+        }
+                ,1000,updateTimeInMilliseconds);
+    }
+
+    private void FlightInfoUpdateTimerTick(int updateTimeInMilliseconds)
+    {
+        flightInfoUpdateTimer = new Timer();
+        flightInfoUpdateTimer.scheduleAtFixedRate(new TimerTask()
+        {
+            public void run()
+            {
+                try
+                {
+                    ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.positionMessage));
+                    textField1.setText(new Integer(msg.getAltitude()).toString());
+                }
+                catch(Exception e)
+                {
+
+                }
+
             }
         }
                 ,1000,updateTimeInMilliseconds);

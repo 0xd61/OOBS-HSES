@@ -9,8 +9,8 @@ import java.util.*;
  */
 public class ADSBMessageMap extends ADSBMessageServerObserverInterface
 {
+    public static final int flightTime = 24;
     public enum MsgType {positionMessage, identificationMessage, velocityMessage};
-
     private HashMap <String, List<ADSBMessage>> icaoMap;
     private static final ADSBMessageMap myMap = new ADSBMessageMap();
     private int numberOfValues = 11; //Anzahl der maximalen Messages eines Flugzeuges in der Liste
@@ -111,7 +111,7 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
                 System.out.println("Parse Error!");
             }
             long test = (currDate.getTime() - flightDate.getTime())/1000;
-            if ((currDate.getTime() - flightDate.getTime())/1000 < 240 )
+            if ((currDate.getTime() - flightDate.getTime())/1000 < flightTime )
                 keys.add(key);
         }
         return keys;

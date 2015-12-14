@@ -72,7 +72,7 @@ public class ADSBMainWindow extends  JFrame
             public void run()
             {
                 listActiveFlights.removeAll();
-                List<String> flights = ADSBMessageMap.getInstance().getFlights();
+                List<String> flights = ADSBMessageMap.getInstance().getAllActive();
                 DefaultListModel model = new DefaultListModel();
 
                 for(String s : flights)

@@ -2,11 +2,14 @@ package messageServer;
 
 import messageServer.Interfaces.ADSBMessageInterface;
 
+import java.util.Date;
+
 /**
  * Created by Johannes on 12.10.2015.
  */
 public class ADSBMessage implements ADSBMessageInterface
 {
+    private Date timestamp;
     private String icao;
     private int type;
     private int ca;
@@ -20,9 +23,9 @@ public class ADSBMessage implements ADSBMessageInterface
     }
 
     @Override
-    public String getTimestamp()
+    public Date getTimestamp()
     {
-        return null;
+        return timestamp;
     }
 
     @Override
@@ -67,5 +70,6 @@ public class ADSBMessage implements ADSBMessageInterface
     @Override
     public void setMsgType(int msgType) {this.msgType = msgType;}
 
-
+    @Override
+    public void setTimestamp (Date timestamp) {this.timestamp = timestamp;}
 }

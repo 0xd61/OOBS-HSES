@@ -5,6 +5,7 @@ import senser.ADSBSentence;
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 
 import java.math.BigInteger;
+import java.util.Date;
 
 
 /**
@@ -15,10 +16,11 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
     @Override
     public ADSBMessage fromADSBSentence(ADSBSentence adsbSentence)
     {
-
-
-        //Payload in Binär umwandeln
+        //Datum fÃ¼r Timestamp
+        Date now = new Date();
+        //Payload in Binï¿½r umwandeln
         String payloadInBin = new BigInteger(adsbSentence.getPayload(),16).toString(2);
+        String timestamp = adsbSentence.getTimestamp();
         while (payloadInBin.length()!= 56)
             payloadInBin = 0 + payloadInBin;
         //int test = payloadInBin.length();
@@ -46,7 +48,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             int CPRLongitude = Integer.parseInt(payloadInBin.substring(39, 56),2);
 
             //TODO: Longitude und Latitude Berechnung
-            //Kann nicht gerechnet werden, da zwei Messages benötigt werden
+            //Kann nicht gerechnet werden, da zwei Messages benï¿½tigt werden
 
 
             //QBit und Altitude Berechnung
@@ -61,6 +63,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
             message.setMsgType(0);
+            message.setTimestamp(now);
             return message;
         }
 
@@ -87,6 +90,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
             message.setMsgType(1);
+            message.setTimestamp(now);
             return message;
         }
 
@@ -126,7 +130,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
                 if (heading < 0)
                     heading += 360;
             }
-            //Nicht wirklich benötigt
+            //Nicht wirklich benï¿½tigt
             if (subtype == 3 || subtype == 4)
             {
                 int headingStatus = Integer.parseInt(payloadInBin.substring(13,14),2);
@@ -145,6 +149,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
             message.setMsgType(2);
+            message.setTimestamp(now);
             return message;
         }
 

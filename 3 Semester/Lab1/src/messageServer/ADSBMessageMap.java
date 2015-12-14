@@ -2,8 +2,6 @@ package messageServer;
 
 import messageServer.Interfaces.ADSBMessageServerObserverInterface;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -96,7 +94,6 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
     public List<String> getAllActive()
     {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date currDate= new Date();
         Date flightDate = null;
         List<String> keys = new ArrayList<String>();
@@ -105,13 +102,16 @@ public class ADSBMessageMap extends ADSBMessageServerObserverInterface
         {
             try
             {
-                flightDate = dateFormat.parse(icaoMap.get(key).get(numberOfValues - 1).getTimestamp());
+                List<ADSBMessage> test = icaoMap.get(key);
+                ADSBMessage msg = test.get(test.size()-1);
+                flightDate = msg.getTimestamp();
             }
             catch (Exception e)
             {
                 System.out.println("Parse Error!");
             }
-            if ((currDate.getTime() - flightDate.getTime()) < 240 )
+            long test = (currDate.getTime() - flightDate.getTime())/1000;
+            if ((currDate.getTime() - flightDate.getTime())/1000 < 240 )
                 keys.add(key);
         }
         return keys;

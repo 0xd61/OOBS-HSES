@@ -19,7 +19,7 @@ public class ADSBMainWindow extends  JFrame
     private JPanel contentPanel;
     private JTabbedPane tabbedPane1;
     private JList listActiveFlights;
-    private JTextField Height;
+    private JTextField Height; //hello
     private JTextField Speed;
     private JTextField ICAO;
     private JTextField Latitude;

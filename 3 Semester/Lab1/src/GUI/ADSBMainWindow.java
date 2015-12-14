@@ -1,8 +1,6 @@
 package GUI;
 
-import messageServer.ADSBAirbornePositionMessage;
-import messageServer.ADSBMessage;
-import messageServer.ADSBMessageMap;
+import messageServer.*;
 
 import java.util.List;
 import java.util.Timer;
@@ -112,8 +110,25 @@ public class ADSBMainWindow extends  JFrame
 
     private void UpdateFlightInfo()
     {
-        ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.positionMessage));
-        textField1.setText(new Integer(msg.getAltitude()).toString());
+        ADSBAirbornePositionMessage msgPosition = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.positionMessage));
+        ADSBAirborneVelocityMessage msgVelocity = ADSBAirborneVelocityMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.velocityMessage));
+        ADSBAircraftIdentificationMessage msgId = ADSBAircraftIdentificationMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.identificationMessage));
+
+        if(msgPosition != null)
+        {
+            textField1.setText(new Integer(msgPosition.getAltitude()).toString());
+
+        }
+
+        if(msgVelocity != null)
+        {
+
+        }
+
+        if(msgId != null)
+        {
+            
+        }
     }
 
     /*

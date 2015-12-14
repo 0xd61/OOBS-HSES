@@ -115,24 +115,26 @@ public class ADSBMainWindow extends  JFrame
 
     private void UpdateFlightInfo()
     {
+        ICAO.setText(currentICAO);
         ADSBAirbornePositionMessage msgPosition = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.positionMessage));
         ADSBAirborneVelocityMessage msgVelocity = ADSBAirborneVelocityMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.velocityMessage));
         ADSBAircraftIdentificationMessage msgId = ADSBAircraftIdentificationMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.identificationMessage));
 
         if(msgPosition != null)
         {
-            textField1.setText(new Integer(msgPosition.getAltitude()).toString());
+            Height.setText(new Integer(msgPosition.getAltitude()).toString());
+            Latitude.setText(new Integer(msgPosition.getCprLongitude()).toString());
+            Longitude.setText(new Integer(msgPosition.getCprLatitude()).toString());
 
         }
 
         if(msgVelocity != null)
         {
-
+            Speed.setText(new Integer(msgVelocity.getSpeed()).toString());
         }
 
         if(msgId != null)
         {
-            
         }
     }
 

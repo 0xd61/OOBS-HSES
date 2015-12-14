@@ -64,6 +64,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             message.setType(TypeCode);
             message.setMsgType(0);
             message.setTimestamp(now);
+            message.enumMsgType = ADSBMessageMap.MsgType.positionMessage;
             return message;
         }
 
@@ -90,6 +91,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
             message.setMsgType(1);
+            message.enumMsgType = ADSBMessageMap.MsgType.identificationMessage;
             message.setTimestamp(now);
             return message;
         }
@@ -149,6 +151,7 @@ public class ADSBMessageFactory implements ADSBMessageFactoryInterface
             message.setICAO(adsbSentence.getIcao());
             message.setType(TypeCode);
             message.setMsgType(2);
+            message.enumMsgType = ADSBMessageMap.MsgType.velocityMessage;
             message.setTimestamp(now);
             return message;
         }

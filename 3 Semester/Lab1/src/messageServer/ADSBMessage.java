@@ -16,6 +16,7 @@ public class ADSBMessage implements ADSBMessageInterface
     private  int df;
     private String payload;
     private int msgType;
+    public ADSBMessageMap.MsgType enumMsgType;
 
     public ADSBMessage()
     {

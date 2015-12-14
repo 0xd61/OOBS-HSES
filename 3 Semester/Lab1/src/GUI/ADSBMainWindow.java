@@ -51,8 +51,7 @@ public class ADSBMainWindow extends  JFrame
                 try
                 {
                     currentICAO = listActiveFlights.getSelectedValue().toString();
-
-
+                    UpdateFlightInfo();
                 }
                 catch(Exception ex)
                 {
@@ -72,14 +71,7 @@ public class ADSBMainWindow extends  JFrame
         {
             public void run()
             {
-                listActiveFlights.removeAll();
-                List<String> flights = ADSBMessageMap.getInstance().getAllActive();
-                DefaultListModel model = new DefaultListModel();
-
-                for(String s : flights)
-                    model.addElement(s);
-
-                listActiveFlights.setModel(model);
+                UpdateFlightList();
             }
         }
                 ,1000,updateTimeInMilliseconds);
@@ -94,8 +86,7 @@ public class ADSBMainWindow extends  JFrame
             {
                 try
                 {
-                    ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.positionMessage));
-                    textField1.setText(new Integer(msg.getAltitude()).toString());
+                    UpdateFlightInfo();
                 }
                 catch(Exception e)
                 {
@@ -105,6 +96,24 @@ public class ADSBMainWindow extends  JFrame
             }
         }
                 ,1000,updateTimeInMilliseconds);
+    }
+
+    private  void UpdateFlightList()
+    {
+        listActiveFlights.removeAll();
+        List<String> flights = ADSBMessageMap.getInstance().getAllActive();
+        DefaultListModel model = new DefaultListModel();
+
+        for(String s : flights)
+            model.addElement(s);
+
+        listActiveFlights.setModel(model);
+    }
+
+    private void UpdateFlightInfo()
+    {
+        ADSBAirbornePositionMessage msg = ADSBAirbornePositionMessage.class.cast(ADSBMessageMap.getInstance().getLastMessageOfType(currentICAO, ADSBMessageMap.MsgType.positionMessage));
+        textField1.setText(new Integer(msg.getAltitude()).toString());
     }
 
     /*

@@ -1,0 +1,24 @@
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Style id="495288">
+<IconStyle>
+<scale>0.7</scale>
+<heading>137</heading>
+<Icon><href>http://localhost:3333/icons/plane09.png</href>
+</Icon>
+</IconStyle>
+</Style>
+<Placemark>
+<name>495288/name>
+<description>
+TAP568   Lon: 128123 Lat: 11912 Alt: 38975 Dir: 137deg Vel: 491 Clm: 0ft/min
+</description>
+<styleUrl>#
+495288"</styleUrl>
+<Point>
+<coordinates>128123, 11912, 38975, </coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+<extrude>1</extrude>/Point
+/Placemark
+/Document
+/kml

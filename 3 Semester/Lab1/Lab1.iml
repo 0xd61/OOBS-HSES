@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jedis-2.8.0" level="project" />
+    <orderEntry type="library" name="jedis-2.8.0_neu" level="project" />
   </component>
 </module>

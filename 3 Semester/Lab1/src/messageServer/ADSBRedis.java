@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
+
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Jedis.*;
 
 
@@ -16,11 +18,10 @@ import redis.clients.jedis.Jedis.*;
  */
 public class ADSBRedis implements Observer
 {
+    Jedis jed;
     public ADSBRedis()
     {
-        RedisClient redis = new RedisClient(
-                RedisURI.create("localhost:6379"));
-        RedisConnection<String, String> connection = (RedisConnection<String, String>) redis.connect();
+        jed = new Jedis("localhost", 6379);
     }
     private class Triple{
         ADSBAirbornePositionMessage posMsg;
@@ -110,6 +111,11 @@ public class ADSBRedis implements Observer
         kmlString.append("</Document>\r\n");
         kmlString.append("</kml>\r\n");
 
+        jed.set(message.getIcao(),kmlString.toString());
+
+        //System.out.print(jed.get(message.getIcao()));
+
+        //in Textfile
         BufferedWriter writer = null;
         try
         {

@@ -7,12 +7,12 @@ import java.net.InetSocketAddress;
  */
 public class Starter
 {
+    static HttpServer server;
     public static void main(String [] args) throws Exception {
         try
         {
-            HttpServer server
-                    = HttpServer.create(new InetSocketAddress(3333), 0);
-            server.createContext("/resource", new ResourceHandler());
+            server = HttpServer.create(new InetSocketAddress(3333), 0);
+            server.createContext("/adsb", new ResourceHandler());
             server.setExecutor(null); // create a default executor
             server.start();
         }
@@ -20,6 +20,10 @@ public class Starter
             {
                 System.out.println(e.getMessage());
             }
+        while (true)
+        {
+
+        }
 
     }
 }

@@ -10,7 +10,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Jedis.*;
 
 
 /**

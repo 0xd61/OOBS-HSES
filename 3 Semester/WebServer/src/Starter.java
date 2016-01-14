@@ -8,13 +8,12 @@ import java.net.InetSocketAddress;
 public class Starter
 {
     static HttpServer server;
-    static HttpServer html;
     public static void main(String [] args) throws Exception {
         try
         {
             server = HttpServer.create(new InetSocketAddress(3333), 0);
-           // server.createContext("/active.kml", new ResourceHandler());
-            server.createContext("/test", new htmlResourceHandler());
+            server.createContext("/active.kml", new ResourceHandler());
+            server.createContext("/", new htmlResourceHandler());
             server.setExecutor(null); // create a default executor
             server.start();
         }

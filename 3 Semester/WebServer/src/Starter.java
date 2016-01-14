@@ -12,7 +12,7 @@ public class Starter
         try
         {
             server = HttpServer.create(new InetSocketAddress(3333), 0);
-            server.createContext("/adsb", new ResourceHandler());
+            server.createContext("/active.kml", new ResourceHandler());
             server.setExecutor(null); // create a default executor
             server.start();
         }

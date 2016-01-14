@@ -118,7 +118,7 @@ public class ADSBRedis implements Observer
         BufferedWriter writer = null;
         try
         {
-            writer = new BufferedWriter(new FileWriter("C:\\Users\\Daniel\\Desktop\\TestfileKML.txt"));
+            writer = new BufferedWriter(new FileWriter("C:\\Users\\Daniel\\Desktop\\TestfileKML.kml"));
         } catch (IOException e)
         {
             e.printStackTrace();

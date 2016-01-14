@@ -24,13 +24,17 @@ public class ResourceHandler implements HttpHandler
         Set<String> myKeys = jed.keys("*");
         if (myKeys.size() > 0)
         {
-            for(String s:myKeys)
-                response.append(jed.get(s)+"\r\n"); // create a string response
-        }
+            for (String s : myKeys)
+            {
+                //response.append(jed.get(s) + "\r\n"); // create a string response
 
-        t.sendResponseHeaders(200, response.length());
-        OutputStream os = t.getResponseBody();
-        os.write(response.toString().getBytes());
-        os.close();
+
+                t.sendResponseHeaders(200, response.length());
+                OutputStream os = t.getResponseBody();
+                //os.write(response.toString().getBytes());
+                os.write(jed.get(s).toString().getBytes());
+                os.close();
+            }
+        }
     }
 }

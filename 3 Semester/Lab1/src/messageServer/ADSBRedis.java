@@ -89,19 +89,25 @@ public class ADSBRedis implements Observer
         kmlString.append("<name>"); kmlString.append(message.getIcao()); kmlString.append("/name>\r\n");
         kmlString.append("<description>\r\n");
         kmlString.append(idMsg.getAircraftId());
-            kmlString.append(" Lon: "); kmlString.append(posMsg.getCprLongitude());
+            /*kmlString.append(" Lon: "); kmlString.append(posMsg.getCprLongitude());
             kmlString.append(" Lat: "); kmlString.append(posMsg.getCprLatitude());
-            kmlString.append(" Alt: "); kmlString.append(posMsg.getAltitude());
+            kmlString.append(" Alt: "); kmlString.append(posMsg.getAltitude());*/
+            kmlString.append(" Lon: "); kmlString.append("9.645923815275493");
+            kmlString.append(" Lat: "); kmlString.append("49.78056335449219");
+            kmlString.append(" Alt: "); kmlString.append("11292m");
             kmlString.append(" Dir: "); kmlString.append("137deg"); //TODO
             kmlString.append(" Vel: "); kmlString.append(velMsg.getSpeed());
             kmlString.append(" Clm: "); kmlString.append("0ft/min\r\n"); //TODO;
         kmlString.append("</description>\r\n");
-        kmlString.append("<styleUrl>#\r\n"); kmlString.append(message.getIcao()); kmlString.append("\"</styleUrl>\r\n");
+        kmlString.append("<styleUrl>#"); kmlString.append(message.getIcao()); kmlString.append("\"</styleUrl>\r\n");
         kmlString.append("<Point>\r\n");
         kmlString.append("<coordinates>");
-            kmlString.append(posMsg.getCprLongitude() + ", ");
-            kmlString.append(posMsg.getCprLatitude() + ", ");
-            kmlString.append(posMsg.getAltitude() + ", ");
+            //kmlString.append(posMsg.getCprLongitude() + ", ");
+            //kmlString.append(posMsg.getCprLatitude() + ", ");
+            //kmlString.append(posMsg.getAltitude() + ", ");
+            kmlString.append(9.645923815275493 + ", ");
+            kmlString.append(49.78056335449219 + ", ");
+            kmlString.append(11292 + ", ");
         kmlString.append("</coordinates>\r\n");
         kmlString.append("<altitudeMode>relativeToGround</altitudeMode>\r\n");
         kmlString.append("<extrude>1</extrude>");

@@ -3,6 +3,7 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Iterator;
 import java.util.Set;
 
 import redis.clients.jedis.Jedis;
@@ -22,7 +23,7 @@ public class ResourceHandler implements HttpHandler
     {
         StringBuilder response = new StringBuilder();
         Set<String> myKeys = jed.keys("*");
-        if (myKeys.size() > 0)
+        /*if (myKeys.size() > 0)
         {
             for (String s : myKeys)
             {
@@ -35,6 +36,14 @@ public class ResourceHandler implements HttpHandler
                 os.write(jed.get(s).toString().getBytes());
                 os.close();
             }
-        }
+        }*/
+        t.sendResponseHeaders(200, response.length());
+        OutputStream os = t.getResponseBody();
+        //os.write(response.toString().getBytes());
+        Iterator<String> it = myKeys.iterator();
+        String key = it.next();
+        os.write(jed.get(key).getBytes());
+        jed.del(key);
+        os.close();
     }
 }

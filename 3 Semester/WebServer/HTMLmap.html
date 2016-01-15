@@ -3,53 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Flightradar la familia</title>
-    <div id="demoMap" style="height:750px"></div>
+    <div id="mapdiv" style="height: 720px"></div>
     <!-- access Openlayers API (OpenStreetMap) -->
-    <script type="text/javascript" src="/OpenLayers-2.13.1/OpenLayers.js"></script>
+    <!--<script type="text/javascript" src="/OpenLayers-2.13.1/OpenLayers.js"></script>-->
+    <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
     <script>
         // ----- define a url for fetching kml strings
         // ----- must be provided by a web server at thQis uri
         // ----- you will probably have to amend this line, depending on your web server URI
-        kmlUrl = "http://localhost:3333/active.kml";
+        function adsbMapInit() {
 
-        map = new OpenLayers.Map("demoMap");
-        map.addLayer(new OpenLayers.Layer.OSM());
-        map.zoomToMaxExtent();
+            kmlUrl = "http://localhost:3333/active.kml";
 
-        actAircraftKml = new OpenLayers.Layer.Vector("Active Aircraft KML", {
-            strategies: [new OpenLayers.Strategy.Fixed()],
-            protocol: new OpenLayers.Protocol.HTTP({
-                url: kmlUrl,
-                format: new OpenLayers.Format.KML({
-                    extractStyles: true,
-                    extractAttributes: true,
-                    maxDepth: 2
+
+            var kml = new OpenLayers.Layer.Vector("Active Aircraft KML", {
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: kmlUrl,
+                    format: new OpenLayers.Format.KML({
+                        extractStyles: true,
+                        extractAttributes: true,
+                        maxDepth: 2
+                    })
                 })
-            })
-        });
-        map.addLayer(actAircraftKml);
+            });
+            var osm = new OpenLayers.Layer.OSM();
+            var map = new OpenLayers.Map("mapdiv");
+            map.addLayer(osm);
+            map.addLayers([osm, kml]);
+            map.zoomToMaxExtent();
 
-        // ----- set the kml aircraft layer to be reloaed from http every second
-        window.setInterval(UpdateKmlLayer, 500);
-
+            // ----- set the kml aircraft layer to be reloaed from http every second
+            window.setInterval(UpdateKmlLayer, 500, kml);
+        };
         function UpdateKmlLayer(layer) {
             // this is the update function called every second by window.setInterval()
-            //layer.loaded = false;
-            //layer.setVisibility(true);
-            //layer.refresh({ force: true, params: { 'key': Math.random()} });
+            layer.loaded = false;
+            layer.setVisibility(true);
+            layer.refresh({ force: true, params: { 'key': Math.random()} });
         }
 
-        var markers = new OpenLayers.Layer.Markers( "Markers" );
+       /* var markers = new OpenLayers.Layer.Markers( "Markers" );
         map.addLayer(markers);
 
         var size = new OpenLayers.Size(21,25);
         var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
         var icon = new OpenLayers.Icon('C:/Users/Daniel/Documents/GitHub/OOBS-HSES/3 Semester/WebServer/Icons/locator.png', size, offset);
         markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon));
-        markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon.clone()));
+        markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon.clone()));*/
 
     </script>
 </head>
-<body>
+<body onload="adsbMapInit();">
 </body>
 </html>

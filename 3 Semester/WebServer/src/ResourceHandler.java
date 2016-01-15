@@ -1,49 +1,38 @@
+import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Iterator;
-import java.util.Set;
-
-import redis.clients.jedis.Jedis;
+import java.io.*;
 
 /**
- * Created by danie on 1/11/2016.
+ * Created by danie on 1/15/2016.
  */
 public class ResourceHandler implements HttpHandler
 {
-    Jedis jed;
-    public ResourceHandler()
-    {
-        jed = new Jedis("localhost", 6379);
-    }
-
     public void handle(HttpExchange t) throws IOException
     {
-        StringBuilder response = new StringBuilder();
-        Set<String> myKeys = jed.keys("*");
-        /*if (myKeys.size() > 0)
+        try
         {
-            for (String s : myKeys)
-            {
-                //response.append(jed.get(s) + "\r\n"); // create a string response
+            // add the required response header for a PDF file
+            Headers h = t.getResponseHeaders();
+            h.add("Content-Type", "file/png");
 
+            // a PDF (you provide your own!)
+            File file = new File("C:/Users/Daniel/Documents/GitHub/OOBS-HSES/3 Semester/WebServer/Icons/locator.png");
+            byte[] bytearray = new byte[(int) file.length()];
+            FileInputStream fis = new FileInputStream(file);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            bis.read(bytearray, 0, bytearray.length);
 
-                t.sendResponseHeaders(200, response.length());
-                OutputStream os = t.getResponseBody();
-                //os.write(response.toString().getBytes());
-                os.write(jed.get(s).toString().getBytes());
-                os.close();
-            }
-        }*/
-        t.sendResponseHeaders(200, response.length());
-        OutputStream os = t.getResponseBody();
-        //os.write(response.toString().getBytes());
-        Iterator<String> it = myKeys.iterator();
-        String key = it.next();
-        os.write(jed.get(key).getBytes());
-        jed.del(key);
-        os.close();
+            // ok, we are ready to send the response.
+            t.sendResponseHeaders(200, file.length());
+            OutputStream os = t.getResponseBody();
+            os.write(bytearray, 0, bytearray.length);
+            os.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
     }
 }

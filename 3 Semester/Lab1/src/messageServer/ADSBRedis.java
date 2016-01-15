@@ -81,7 +81,7 @@ public class ADSBRedis implements Observer
         kmlString.append("<scale>0.7</scale>\r\n");
         kmlString.append("<heading>137</heading>\r\n");
         kmlString.append("<Icon>");
-        kmlString.append("<href>http://localhost:3333/icons/plane09.png</href>\r\n");
+        kmlString.append("<href>http://localhost:3333/icon.png</href>\r\n");
         kmlString.append("</Icon>\r\n");
         kmlString.append("</IconStyle>\r\n");
         kmlString.append("</Style>\r\n");
@@ -121,7 +121,7 @@ public class ADSBRedis implements Observer
         //System.out.print(jed.get(message.getIcao()));
 
         //in Textfile
-        BufferedWriter writer = null;
+        /*BufferedWriter writer = null;
         try
         {
             writer = new BufferedWriter(new FileWriter("C:\\Users\\Daniel\\Desktop\\TestfileKML.kml"));
@@ -144,7 +144,7 @@ public class ADSBRedis implements Observer
         } catch (IOException e)
         {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

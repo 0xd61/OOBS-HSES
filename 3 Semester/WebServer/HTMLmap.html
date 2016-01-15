@@ -13,7 +13,7 @@
         // ----- you will probably have to amend this line, depending on your web server URI
         function adsbMapInit() {
 
-            kmlUrl = "http://localhost:3333/active.kml";
+            var kmlUrl = "http://localhost:3333/active.kml";
 
 
             var kml = new OpenLayers.Layer.Vector("Active Aircraft KML", {
@@ -27,30 +27,34 @@
                     })
                 })
             });
-            var osm = new OpenLayers.Layer.OSM();
-            var map = new OpenLayers.Map("mapdiv");
-            map.addLayer(osm);
-            map.addLayers([osm, kml]);
+
+            var test = new OpenLayers.Layer.Vector("KML", {
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: kmlUrl,
+                    format: new OpenLayers.Format.KML({
+                        extractStyles: true,
+                        extractAttributes: true,
+                        maxDepth: 2
+                    })
+                })
+            })
+            var wms = new OpenLayers.Layer.WMS(
+                    "WMS", "http://vmap0.tiles.osgeo.org/wms/vmap0",
+                    {layers: "basic"});
+            map = new OpenLayers.Map("mapdiv");
+            map.addLayers([wms, test]);
             map.zoomToMaxExtent();
 
             // ----- set the kml aircraft layer to be reloaed from http every second
-            window.setInterval(UpdateKmlLayer, 500, kml);
-        };
+            window.setInterval(UpdateKmlLayer, 500, test);
+        }
         function UpdateKmlLayer(layer) {
             // this is the update function called every second by window.setInterval()
             layer.loaded = false;
             layer.setVisibility(true);
-            layer.refresh({ force: true, params: { 'key': Math.random()} });
+            layer.refresh({force: true, params: {'key': Math.random()}});
         }
-
-       /* var markers = new OpenLayers.Layer.Markers( "Markers" );
-        map.addLayer(markers);
-
-        var size = new OpenLayers.Size(21,25);
-        var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-        var icon = new OpenLayers.Icon('C:/Users/Daniel/Documents/GitHub/OOBS-HSES/3 Semester/WebServer/Icons/locator.png', size, offset);
-        markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon));
-        markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon.clone()));*/
 
     </script>
 </head>

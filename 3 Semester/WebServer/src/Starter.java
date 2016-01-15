@@ -12,8 +12,9 @@ public class Starter
         try
         {
             server = HttpServer.create(new InetSocketAddress(3333), 0);
-            server.createContext("/active.kml", new ResourceHandler());
-            server.createContext("/", new htmlResourceHandler());
+            server.createContext("/active.kml", new KmlHandler());
+            server.createContext("/", new HTMLHandler());
+            server.createContext("/icon.png", new ResourceHandler());
             server.setExecutor(null); // create a default executor
             server.start();
         }

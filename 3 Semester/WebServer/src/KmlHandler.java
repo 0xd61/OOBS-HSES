@@ -23,6 +23,7 @@ public class KmlHandler implements HttpHandler
     {
         StringBuilder response = new StringBuilder();
         Set<String> myKeys = jed.keys("*");
+
         /*if (myKeys.size() > 0)
         {
             for (String s : myKeys)
@@ -39,11 +40,17 @@ public class KmlHandler implements HttpHandler
         }*/
         t.sendResponseHeaders(200, response.length());
         OutputStream os = t.getResponseBody();
-        //os.write(response.toString().getBytes());
-        Iterator<String> it = myKeys.iterator();
-        String key = it.next();
-        os.write(jed.get(key).getBytes());
-        jed.del(key);
+        if(myKeys.isEmpty())
+        {
+            os.write("No Key available!".getBytes());
+        }
+        else
+        {
+            Iterator<String> it = myKeys.iterator();
+            String key = it.next();
+            os.write(jed.get(key).getBytes());
+            jed.del(key);
+        }
         os.close();
     }
 }

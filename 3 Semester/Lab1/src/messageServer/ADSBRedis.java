@@ -1,7 +1,5 @@
 package messageServer;
 
-import messageServer.Interfaces.ADSBMessageServerObserverInterface;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -74,6 +72,7 @@ public class ADSBRedis implements Observer
 
         StringBuilder kmlString = new StringBuilder();
 
+        kmlString.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         kmlString.append("<kml xmlns=\"http://www.opengis.net/kml/2.2\">\r\n");
         kmlString.append("<Document>\r\n");
         kmlString.append("<Style id=\""); kmlString.append(message.getIcao()); kmlString.append("\">\r\n");
@@ -86,7 +85,7 @@ public class ADSBRedis implements Observer
         kmlString.append("</IconStyle>\r\n");
         kmlString.append("</Style>\r\n");
         kmlString.append("<Placemark>\r\n");
-        kmlString.append("<name>"); kmlString.append(message.getIcao()); kmlString.append("/name>\r\n");
+        kmlString.append("<name>"); kmlString.append(message.getIcao()); kmlString.append("</name>\r\n");
         kmlString.append("<description>\r\n");
         kmlString.append(idMsg.getAircraftId());
             /*kmlString.append(" Lon: "); kmlString.append(posMsg.getCprLongitude());
@@ -121,7 +120,7 @@ public class ADSBRedis implements Observer
         //System.out.print(jed.get(message.getIcao()));
 
         //in Textfile
-        /*BufferedWriter writer = null;
+        BufferedWriter writer = null;
         try
         {
             writer = new BufferedWriter(new FileWriter("C:\\Users\\Daniel\\Desktop\\TestfileKML.kml"));
@@ -144,7 +143,7 @@ public class ADSBRedis implements Observer
         } catch (IOException e)
         {
             e.printStackTrace();
-        }*/
+        }
 
 
     }

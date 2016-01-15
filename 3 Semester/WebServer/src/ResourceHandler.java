@@ -13,11 +13,11 @@ public class ResourceHandler implements HttpHandler
     {
         try
         {
-            // add the required response header for a PDF file
+            // add the required response header for a png file
             Headers h = t.getResponseHeaders();
             h.add("Content-Type", "file/png");
 
-            // a PDF (you provide your own!)
+            // a png (you provide your own!)
             File file = new File("C:/Users/Daniel/Documents/GitHub/OOBS-HSES/3 Semester/WebServer/Icons/locator.png");
             byte[] bytearray = new byte[(int) file.length()];
             FileInputStream fis = new FileInputStream(file);

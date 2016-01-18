@@ -15,6 +15,7 @@ public class Starter
             server.createContext("/active.kml", new KmlHandler());
             server.createContext("/", new HTMLHandler());
             server.createContext("/icon.png", new ResourceHandler());
+            server.createContext("/icons/basestation.png", new ResourceHandlerBASE());
             server.setExecutor(null); // create a default executor
             server.start();
         }

@@ -18,7 +18,7 @@ public class HTMLHandler implements HttpHandler
         try
         {
             System.out.println(HTMLHandler.class.getProtectionDomain().getCodeSource().getLocation());
-            String content = new Scanner(new File("C:/Users/Daniel/Documents/GitHub/OOBS-HSES/3 Semester/WebServer/HTMLmap.html")).useDelimiter("\\Z").next();
+            String content = new Scanner(new File("C:/Users/Daniel/Downloads/basicMap.html")).useDelimiter("\\Z").next();
             //String content = new Scanner(new File(getClass().getResource("HTMLmap.html").toString())).useDelimiter("\\Z").next();
 
             t.sendResponseHeaders(200, content.length());

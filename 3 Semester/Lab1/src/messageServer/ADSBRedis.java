@@ -72,8 +72,6 @@ public class ADSBRedis implements Observer
 
         StringBuilder kmlString = new StringBuilder();
 
-        kmlString.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        kmlString.append("<kml xmlns=\"http://www.opengis.net/kml/2.2\">\r\n");
         kmlString.append("<Document>\r\n");
         kmlString.append("<Style id=\""); kmlString.append(message.getIcao()); kmlString.append("\">\r\n");
         kmlString.append("<IconStyle>\r\n");
@@ -88,34 +86,30 @@ public class ADSBRedis implements Observer
         kmlString.append("<name>"); kmlString.append(message.getIcao()); kmlString.append("</name>\r\n");
         kmlString.append("<description>\r\n");
         kmlString.append(idMsg.getAircraftId());
-            /*kmlString.append(" Lon: "); kmlString.append(posMsg.getCprLongitude());
+            kmlString.append(" Lon: "); kmlString.append(posMsg.getCprLongitude());
             kmlString.append(" Lat: "); kmlString.append(posMsg.getCprLatitude());
-            kmlString.append(" Alt: "); kmlString.append(posMsg.getAltitude());*/
-            kmlString.append(" Lon: "); kmlString.append("9.645923815275493");
-            kmlString.append(" Lat: "); kmlString.append("49.78056335449219");
-            kmlString.append(" Alt: "); kmlString.append("11292m");
+            kmlString.append(" Alt: "); kmlString.append(posMsg.getAltitude());
             kmlString.append(" Dir: "); kmlString.append("137deg"); //TODO
             kmlString.append(" Vel: "); kmlString.append(velMsg.getSpeed());
             kmlString.append(" Clm: "); kmlString.append("0ft/min\r\n"); //TODO;
         kmlString.append("</description>\r\n");
-        kmlString.append("<styleUrl>#"); kmlString.append(message.getIcao()); kmlString.append("\"</styleUrl>\r\n");
+        kmlString.append("<styleUrl>#"); kmlString.append(message.getIcao()); kmlString.append("</styleUrl>\r\n");
         kmlString.append("<Point>\r\n");
         kmlString.append("<coordinates>");
-            //kmlString.append(posMsg.getCprLongitude() + ", ");
-            //kmlString.append(posMsg.getCprLatitude() + ", ");
-            //kmlString.append(posMsg.getAltitude() + ", ");
-            kmlString.append(9.645923815275493 + ", ");
-            kmlString.append(49.78056335449219 + ", ");
-            kmlString.append(11292 + ", ");
+            kmlString.append(posMsg.getCprLongitude() + ", ");
+            kmlString.append(posMsg.getCprLatitude() + ", ");
+            kmlString.append(posMsg.getAltitude() + ", ");
+            /*kmlString.append(0 + ", ");
+            kmlString.append(0 + ", ");
+            kmlString.append(0);*/
         kmlString.append("</coordinates>\r\n");
         kmlString.append("<altitudeMode>relativeToGround</altitudeMode>\r\n");
-        kmlString.append("<extrude>1</extrude>");
+        kmlString.append("<extrude>1</extrude>\r\n");
         kmlString.append("</Point>\r\n");
         kmlString.append("</Placemark>\r\n");
         kmlString.append("</Document>\r\n");
-        kmlString.append("</kml>\r\n");
 
-        jed.set(message.getIcao(),kmlString.toString());
+        jed.setex(message.getIcao(),240,kmlString.toString());
 
         //System.out.print(jed.get(message.getIcao()));
 

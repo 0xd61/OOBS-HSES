@@ -14,6 +14,7 @@
         function adsbMapInit() {
 
             var kmlUrl = "http://localhost:3333/active.kml";
+            //var kmlUrl = "http://gemeinde-eben-ezer.de/plugins/system/plugin_googlemap3/maps-gemeinde-locations.kml"
 
 
             var kml = new OpenLayers.Layer.Vector("Active Aircraft KML", {
@@ -43,11 +44,11 @@
                     "WMS", "http://vmap0.tiles.osgeo.org/wms/vmap0",
                     {layers: "basic"});
             map = new OpenLayers.Map("mapdiv");
-            map.addLayers([wms, test]);
+            map.addLayers([wms, kml]);
             map.zoomToMaxExtent();
 
             // ----- set the kml aircraft layer to be reloaed from http every second
-            window.setInterval(UpdateKmlLayer, 500, test);
+            window.setInterval(UpdateKmlLayer, 500, kml);
         }
         function UpdateKmlLayer(layer) {
             // this is the update function called every second by window.setInterval()
